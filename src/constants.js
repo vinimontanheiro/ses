@@ -1,6 +1,8 @@
 import {Platform} from 'react-native';
 
-export const IS_DEVELOPMENT = false;
+export const IS_DEVELOPMENT = true;
+
+export const WEB_CLIENT_ID = `119879670298-v0nd2t43ag4b9oh3lj04rr6n5n2457tl.apps.googleusercontent.com`;
 
 export const IS_ANDROID = Platform.OS === `android`;
 

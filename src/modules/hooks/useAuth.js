@@ -1,7 +1,7 @@
 import {useSelector, shallowEqual, useDispatch} from 'react-redux';
 import {useEffect, useMemo} from 'react';
 import AsyncStorage from '@react-native-community/async-storage';
-import {debug} from '../../services/utils';
+import {showLog} from '../../services/utils';
 import {restoreTokenAction, signInAction, resetAuthStoreAction} from '../../services/redux/actions';
 
 const useAuth = () => {
@@ -22,7 +22,7 @@ const useAuth = () => {
         const storageToken = await AsyncStorage.getItem(`token`);
         dispatch(restoreTokenAction(storageToken));
       } catch (e) {
-        debug(e);
+        showLog(e);
       }
     };
     if (!isSignOut) {

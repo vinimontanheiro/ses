@@ -5,7 +5,7 @@
 import {GoogleSignin} from '@react-native-community/google-signin';
 import {useCallback, useContext} from 'react';
 import {useTranslation} from 'react-i18next';
-import {debug} from '../../services/utils';
+import {debug, showLog} from '../../services/utils';
 import {AuthContext} from '../../services/context';
 import useLoading from './useLoading';
 import useMessage from './useMessage';
@@ -26,18 +26,20 @@ const useSign = () => {
 
   const handleGoogleSignIn = useCallback(async () => {
     try {
+      console.log(`handling`);
       if (IS_ANDROID) {
         await GoogleSignin.hasPlayServices();
       }
       const {user} = await GoogleSignin.signIn();
+      console.log(user);
       const {accessToken} = await GoogleSignin.getTokens();
       if (accessToken) {
-        setLoading(true);
+        // setLoading(true);
         setToken(accessToken);
       }
     } catch (error) {
-      setLoading(false);
-      debug(error);
+      // setLoading(false);
+      showLog(error);
     }
   }, [setToken, setLoading]);
 

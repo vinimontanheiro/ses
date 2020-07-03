@@ -1,23 +1,24 @@
-const commons = {
+const color = {
+  blue1: `#253C71`,
+  blue2: `#0D9EFA`,
+  blue3: `#52B6F5`,
+  blue4: `#89D1FF`,
+  blue5: `#B2E0FD`,
+  blue6: `#EEF5FF`,
+  blueText: `#0E9FFA`,
+  grayText: `#706F6F`,
+  purpleText: `#9A359A`,
+  white: `#ffffff`,
   black: `#000000`,
   dark: `#323030`,
   default: `#D1CACA`,
   defaultLight: `#fafafa`,
   danger: `rgb(255, 0, 0)`,
   warning: `#ffd400`,
-  info: `#cce5ff`,
-  enabled: `#4d89ea`,
   transparent: `transparent`,
   underlay: `rgba(0,0,0, 0.3)`,
 };
 
-const light = {
-  color: {
-    light: `#fff`,
-    ...commons,
-  },
-};
-
 export default {
-  ...light,
+  color,
 };

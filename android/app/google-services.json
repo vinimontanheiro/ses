@@ -15,6 +15,22 @@
       },
       "oauth_client": [
         {
+          "client_id": "119879670298-raij60cp6rilhhe7v69uhrvj0jt6ahfc.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "br.com.engie.ses",
+            "certificate_hash": "b8ef571ac951d4afce0521cf04a0efa35a40bcea"
+          }
+        },
+        {
+          "client_id": "119879670298-6gpn6in1obkfmv909ujvfakr8nq2buuo.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "br.com.engie.ses",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
           "client_id": "119879670298-crngr1jk0el8etgj7nplkie7u130tsmg.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
@@ -38,6 +54,13 @@
             {
               "client_id": "119879670298-v0nd2t43ag4b9oh3lj04rr6n5n2457tl.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "119879670298-46v8k2thn6lrme6j86hhpk658m3a4ab9.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "br.com.engie.ses"
+              }
             }
           ]
         }

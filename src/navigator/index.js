@@ -8,11 +8,14 @@ import PublicNavigator from './PublicNavigator';
 import {AuthContext} from '../services/context';
 import useAuth from '../modules/hooks/useAuth';
 import PrivateNavigator from './PrivateNavigator';
+import useBootstrap from '../modules/hooks/useBootstrap';
 
 const Stack = createStackNavigator();
 
 const Navigator = () => {
   const [authContext, {token, isSignOut}] = useAuth();
+
+  useBootstrap();
 
   return (
     <>
@@ -20,16 +23,14 @@ const Navigator = () => {
       <NavigationContainer>
         <AuthContext.Provider value={authContext}>
           {!token || isSignOut ? (
-            <SafeAreaView style={styles.notSigned}>
-              <Stack.Navigator
-                initialRouteName={SCREEN.SIGN_IN}
-                headerMode="screen"
-                screenOptions={{headerBackTitleVisible: false}}>
-                {PublicNavigator.map(({name, options, component}) => (
-                  <Stack.Screen key={name} name={name} options={options} component={component} />
-                ))}
-              </Stack.Navigator>
-            </SafeAreaView>
+            <Stack.Navigator
+              initialRouteName={SCREEN.SIGN_IN}
+              headerMode="screen"
+              screenOptions={{headerBackTitleVisible: false, headerTransparent: true}}>
+              {PublicNavigator.map(({name, options, component}) => (
+                <Stack.Screen key={name} name={name} options={options} component={component} />
+              ))}
+            </Stack.Navigator>
           ) : (
             <SafeAreaView style={styles.signed}>
               <Stack.Navigator

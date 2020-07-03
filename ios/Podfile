@@ -83,6 +83,7 @@ target 'SES' do
   end
 
   pod 'Firebase/Analytics'
+  pod 'GoogleSignIn', '~> 5.0.2'
 
   use_native_modules!
 
