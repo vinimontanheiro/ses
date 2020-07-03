@@ -1,0 +1,8 @@
+{
+  "action":{
+    "close" : "Fechar"
+  },
+  "sign": {
+    "welcome": "Bem vindo"
+  }
+}

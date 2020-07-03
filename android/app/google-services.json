@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "119879670298",
+    "firebase_url": "https://safety-elevation-system.firebaseio.com",
+    "project_id": "safety-elevation-system",
+    "storage_bucket": "safety-elevation-system.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:119879670298:android:e6271610a56dc763e88fa3",
+        "android_client_info": {
+          "package_name": "br.com.engie.ses"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "119879670298-crngr1jk0el8etgj7nplkie7u130tsmg.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "br.com.engie.ses",
+            "certificate_hash": "d2c2b484a8803ab10c23a36ca2e78c81ee6b7a93"
+          }
+        },
+        {
+          "client_id": "119879670298-v0nd2t43ag4b9oh3lj04rr6n5n2457tl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDZZ827MKMx177voNzu5BPqCci2mhX9WU0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "119879670298-v0nd2t43ag4b9oh3lj04rr6n5n2457tl.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

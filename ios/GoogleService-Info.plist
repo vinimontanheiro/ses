@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>119879670298-46v8k2thn6lrme6j86hhpk658m3a4ab9.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.119879670298-46v8k2thn6lrme6j86hhpk658m3a4ab9</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>119879670298-6gpn6in1obkfmv909ujvfakr8nq2buuo.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCKak8AkDs3DE1hdM3FA3UA-RNMp5sjG9M</string>
+	<key>GCM_SENDER_ID</key>
+	<string>119879670298</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>br.com.engie.ses</string>
+	<key>PROJECT_ID</key>
+	<string>safety-elevation-system</string>
+	<key>STORAGE_BUCKET</key>
+	<string>safety-elevation-system.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:119879670298:ios:9fd1a09aaafa6301e88fa3</string>
+	<key>DATABASE_URL</key>
+	<string>https://safety-elevation-system.firebaseio.com</string>
+</dict>
+</plist>
