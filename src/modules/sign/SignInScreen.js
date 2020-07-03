@@ -25,43 +25,16 @@ const SignInScreen = () => {
     <KeyboardAvoidingView style={styles.flex} keyboardShouldPersistTaps="handled">
       <ScrollView style={styles.content} contentContainerStyle={styles.container}>
         <ImageBackground style={styles.imgBackground} resizeMode="cover" source={BACKGROUND_IMG}>
-          <View
-            style={{
-              flex: 0.07,
-              // backgroundColor: `red`,
-              justifyContent: `flex-end`,
-              alignItems: `center`,
-            }}>
+          <View style={styles.logo}>
             <Image source={LOGO_SIGNIN} />
           </View>
-
-          <View
-            style={{
-              backgroundColor: theme.color.blue1,
-              flex: 0.15,
-              borderTopLeftRadius: 25,
-              borderTopRightRadius: 25,
-              padding: 10,
-              alignItems: `center`,
-              justifyContent: `flex-start`,
-            }}>
-            {/* <Text style={{color: theme.color.white, fontSize: 22, fontWeight: `bold`}}>
-              {t(`join`)}
-            </Text> */}
+          <View style={styles.box}>
             <View style={styles.body}>
-              <TouchableHighlight
-                style={{
-                  backgroundColor: `white`,
-                  paddingHorizontal: 10,
-                  paddingVertical: 10,
-                  borderRadius: 5,
-                }}
-                onPress={handleGoogleSignIn}>
+              <TouchableHighlight style={styles.googleBTN} onPress={handleGoogleSignIn}>
                 <View
                   style={{justifyContent: `center`, alignItems: `center`, flexDirection: `row`}}>
                   <Image source={GOOGLE} width={60} height={60} />
-
-                  <Text style={{marginLeft: 5, fontSize: 16}}>Entrar com o Google</Text>
+                  <Text style={styles.text}>Entrar com o Google</Text>
                 </View>
               </TouchableHighlight>
             </View>
@@ -84,6 +57,11 @@ const styles = StyleSheet.create({
     alignItems: `center`,
     justifyContent: `center`,
   },
+  logo: {
+    flex: 0.07,
+    justifyContent: `flex-end`,
+    alignItems: `center`,
+  },
   body: {
     flex: 1,
     alignItems: `center`,
@@ -95,6 +73,25 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: `column`,
     justifyContent: `space-between`,
+  },
+  box: {
+    backgroundColor: theme.color.blue1,
+    flex: 0.15,
+    borderTopLeftRadius: 25,
+    borderTopRightRadius: 25,
+    padding: 10,
+    alignItems: `center`,
+    justifyContent: `flex-start`,
+  },
+  googleBTN: {
+    backgroundColor: `white`,
+    paddingHorizontal: 10,
+    paddingVertical: 10,
+    borderRadius: 5,
+  },
+  text: {
+    marginLeft: 5,
+    fontSize: 16,
   },
 });
 
