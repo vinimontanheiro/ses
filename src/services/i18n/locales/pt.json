@@ -3,6 +3,15 @@
     "close" : "Fechar"
   },
   "sign": {
-    "join": "Entrar"
+    "join": "Entrar",
+    "sign_in_with_google" : "Entrar com o Google"
+  },
+  "home":{
+    "hello":"Olá",
+    "choose_some_action_below": "Escolha alguma ação abaixo.",
+    "crane" : "Guindaste",
+    "device": "Dispositivo",
+    "calculator" : "Calculadora",
+    "security": "Segurança"
   }
 }

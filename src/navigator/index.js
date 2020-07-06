@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {StyleSheet, StatusBar} from 'react-native';
+import {StyleSheet} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
@@ -18,40 +18,37 @@ const Navigator = () => {
   useBootstrap();
 
   return (
-    <>
-      <StatusBar translucent backgroundColor="transparent" barStyle="light-content" />
-      <NavigationContainer>
-        <AuthContext.Provider value={authContext}>
-          {!token || isSignOut ? (
+    <NavigationContainer>
+      <AuthContext.Provider value={authContext}>
+        {!token || isSignOut ? (
+          <Stack.Navigator
+            initialRouteName={SCREEN.SIGN_IN}
+            headerMode="screen"
+            screenOptions={{headerBackTitleVisible: false, headerTransparent: true}}>
+            {PublicNavigator.map(({name, options, component}) => (
+              <Stack.Screen key={name} name={name} options={options} component={component} />
+            ))}
+          </Stack.Navigator>
+        ) : (
+          <SafeAreaView style={styles.signed}>
             <Stack.Navigator
-              initialRouteName={SCREEN.SIGN_IN}
+              initialRouteName={SCREEN.QR_CODE_SCANNER}
               headerMode="screen"
-              screenOptions={{headerBackTitleVisible: false, headerTransparent: true}}>
-              {PublicNavigator.map(({name, options, component}) => (
-                <Stack.Screen key={name} name={name} options={options} component={component} />
+              screenOptions={{headerBackTitleVisible: false}}>
+              {PrivateNavigator.map(({name, options, component}) => (
+                <Stack.Screen
+                  key={name}
+                  name={name}
+                  options={options}
+                  initialParams={{isQRCode: name === SCREEN.QR_CODE_SCANNER}}
+                  component={component}
+                />
               ))}
             </Stack.Navigator>
-          ) : (
-            <SafeAreaView style={styles.signed}>
-              <Stack.Navigator
-                initialRouteName={SCREEN.QR_CODE_SCANNER}
-                headerMode="screen"
-                screenOptions={{headerBackTitleVisible: false}}>
-                {PrivateNavigator.map(({name, options, component}) => (
-                  <Stack.Screen
-                    key={name}
-                    name={name}
-                    options={options}
-                    initialParams={{isQRCode: name === SCREEN.QR_CODE_SCANNER}}
-                    component={component}
-                  />
-                ))}
-              </Stack.Navigator>
-            </SafeAreaView>
-          )}
-        </AuthContext.Provider>
-      </NavigationContainer>
-    </>
+          </SafeAreaView>
+        )}
+      </AuthContext.Provider>
+    </NavigationContainer>
   );
 };
 

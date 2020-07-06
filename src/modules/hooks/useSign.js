@@ -4,18 +4,19 @@
 // } from '@invertase/react-native-apple-authentication';
 import {GoogleSignin} from '@react-native-community/google-signin';
 import {useCallback, useContext} from 'react';
-import {useTranslation} from 'react-i18next';
-import {debug, showLog} from '../../services/utils';
+
+import {showLog} from '../../services/utils';
 import {AuthContext} from '../../services/context';
-import useLoading from './useLoading';
-import useMessage from './useMessage';
+
 import {IS_ANDROID} from '../../constants';
+import useUser from './useUser';
 
 const useSign = () => {
   const {authSignIn} = useContext(AuthContext);
-  const {t} = useTranslation(`error`);
-  const {showMessage} = useMessage({t});
-  const [, setLoading] = useLoading();
+  // const {t} = useTranslation(`error`);
+  const {updateUser} = useUser();
+  // const {showMessage} = useMessage({t});
+  // const [, setLoading] = useLoading();
 
   const setToken = useCallback(
     (token) => {
@@ -26,22 +27,19 @@ const useSign = () => {
 
   const handleGoogleSignIn = useCallback(async () => {
     try {
-      console.log(`handling`);
       if (IS_ANDROID) {
         await GoogleSignin.hasPlayServices();
       }
       const {user} = await GoogleSignin.signIn();
-      console.log(user);
       const {accessToken} = await GoogleSignin.getTokens();
       if (accessToken) {
-        // setLoading(true);
+        updateUser(user);
         setToken(accessToken);
       }
     } catch (error) {
-      // setLoading(false);
       showLog(error);
     }
-  }, [setToken, setLoading]);
+  }, [setToken, updateUser]);
 
   // const handleAppleSignIn = useCallback(async () => {
   //   try {

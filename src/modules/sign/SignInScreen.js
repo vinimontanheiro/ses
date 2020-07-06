@@ -43,7 +43,7 @@ const SignInScreen = () => {
                 <View
                   style={{justifyContent: `center`, alignItems: `center`, flexDirection: `row`}}>
                   <Image source={GOOGLE} width={60} height={60} />
-                  <Text style={styles.text}>Entrar com o Google</Text>
+                  <Text style={styles.text}>{t(`sign_in_with_google`)}</Text>
                 </View>
               </TouchableHighlight>
             </View>

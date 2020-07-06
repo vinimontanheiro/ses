@@ -3,6 +3,7 @@ import {SET_APP, RESET_APP_STORE} from '../actions';
 
 const initialState = {
   loading: false,
+  user: null,
 };
 
 const App = handleActions(

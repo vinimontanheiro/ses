@@ -13,7 +13,7 @@ const App = () => {
     <ReduxProvider store={store}>
       <PersistGate loading={null} persistor={persistor}>
         <I18nextProvider i18n={i18next}>
-          <StatusBar translucent backgroundColor="transparent" barStyle="light-content" />
+          <StatusBar translucent backgroundColor="transparent" barStyle="dark-content" />
           <Navigator />
           <Loading />
         </I18nextProvider>

@@ -10,7 +10,7 @@ const color = {
   purpleText: `#9A359A`,
   white: `#ffffff`,
   black: `#000000`,
-  dark: `#323030`,
+  dark: `#3B2D2A`,
   default: `#D1CACA`,
   defaultLight: `#fafafa`,
   danger: `rgb(255, 0, 0)`,
