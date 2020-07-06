@@ -25,12 +25,21 @@ const SignInScreen = () => {
     <KeyboardAvoidingView style={styles.flex} keyboardShouldPersistTaps="handled">
       <ScrollView style={styles.content} contentContainerStyle={styles.container}>
         <ImageBackground style={styles.imgBackground} resizeMode="cover" source={BACKGROUND_IMG}>
-          <View style={styles.logo}>
-            <Image source={LOGO_SIGNIN} />
+          <View style={styles.logoBox}>
+            <Image
+              style={styles.logo}
+              source={LOGO_SIGNIN}
+              width={styles.logo.width}
+              height={styles.logo.height}
+              resizeMode="contain"
+            />
           </View>
           <View style={styles.box}>
             <View style={styles.body}>
-              <TouchableHighlight style={styles.googleBTN} onPress={handleGoogleSignIn}>
+              <TouchableHighlight
+                style={styles.googleBTN}
+                onPress={handleGoogleSignIn}
+                underlayColor={theme.color.defaultLight}>
                 <View
                   style={{justifyContent: `center`, alignItems: `center`, flexDirection: `row`}}>
                   <Image source={GOOGLE} width={60} height={60} />
@@ -57,10 +66,14 @@ const styles = StyleSheet.create({
     alignItems: `center`,
     justifyContent: `center`,
   },
-  logo: {
+  logoBox: {
     flex: 0.07,
     justifyContent: `flex-end`,
     alignItems: `center`,
+  },
+  logo: {
+    width: 180,
+    height: 92.2,
   },
   body: {
     flex: 1,
@@ -76,7 +89,7 @@ const styles = StyleSheet.create({
   },
   box: {
     backgroundColor: theme.color.blue1,
-    flex: 0.15,
+    flex: 0.19,
     borderTopLeftRadius: 25,
     borderTopRightRadius: 25,
     padding: 10,
