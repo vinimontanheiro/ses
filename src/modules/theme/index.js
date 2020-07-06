@@ -8,6 +8,7 @@ const color = {
   blueText: `#0E9FFA`,
   grayText: `#706F6F`,
   purpleText: `#9A359A`,
+  purple: `#8AB2EB`,
   white: `#ffffff`,
   black: `#000000`,
   dark: `#3B2D2A`,

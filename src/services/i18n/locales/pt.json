@@ -13,5 +13,11 @@
     "device": "Dispositivo",
     "calculator" : "Calculadora",
     "security": "Segurança"
+  },
+  "security":{
+    "braces" :"Cintas",
+    "shackles": "Manilhas",
+    "cables" : "Cabos",
+    "angles" : "Ângulos"
   }
 }

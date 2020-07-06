@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useCallback} from 'react';
 import {
   Text,
   StyleSheet,
@@ -9,6 +9,7 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import {useTranslation} from 'react-i18next';
+import {useNavigation} from '@react-navigation/native';
 import theme from '../theme';
 import GUIN_IMG from '../../assets/img/guin.png';
 import DEVICE_IMG from '../../assets/img/device.png';
@@ -16,12 +17,22 @@ import CALCULATOR_IMG from '../../assets/img/calculator.png';
 import SECURITY_IMG from '../../assets/img/security.png';
 import ARROW_IMG from '../../assets/img/arrow.png';
 import useUser from '../hooks/useUser';
+import {SCREEN} from '../../constants';
 
 const HomeScreen = () => {
   const {t} = useTranslation(`home`);
+  const navigation = useNavigation();
   const {
     user: {givenName},
   } = useUser();
+
+  const handleNavigation = useCallback(
+    (screen) => {
+      navigation.navigate(screen);
+    },
+    [navigation],
+  );
+
   return (
     <KeyboardAvoidingView style={styles.flex} keyboardShouldPersistTaps="handled">
       <ScrollView style={styles.content} contentContainerStyle={styles.container}>
@@ -65,7 +76,10 @@ const HomeScreen = () => {
               <Image style={styles.arrow} source={ARROW_IMG} />
             </View>
           </TouchableOpacity>
-          <TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => {
+              handleNavigation(SCREEN.SECURITY_SCREEN);
+            }}>
             <View style={[styles.box, {backgroundColor: theme.color.blue5}]}>
               <View style={styles.boxContent}>
                 <Image style={styles.image} source={SECURITY_IMG} />

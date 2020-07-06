@@ -8,9 +8,9 @@ export const IS_ANDROID = Platform.OS === `android`;
 
 export const SCREEN = {
   SIGN_IN: `sign_in`,
-  QR_CODE_SCANNER: `qr_code_scanner`,
-  SUPPLY_SCREEN: `supply_screen`,
-  FORGOT_PASSWORD: `forgot_my_password`,
+  HOME_SCREEN: `home_screen`,
+  SECURITY_SCREEN: `security_screen`,
+  SECURITY_ITEM_SCREEN: `security_item_screen`,
 };
 
 export const ANIMATION_TYPE = {

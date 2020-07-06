@@ -3,6 +3,7 @@ import {StyleSheet} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
+import {useTranslation} from 'react-i18next';
 import {SCREEN} from '../constants';
 import PublicNavigator from './PublicNavigator';
 import {AuthContext} from '../services/context';
@@ -14,7 +15,7 @@ const Stack = createStackNavigator();
 
 const Navigator = () => {
   const [authContext, {token, isSignOut}] = useAuth();
-
+  const {t} = useTranslation(`home`);
   useBootstrap();
 
   return (
@@ -32,15 +33,17 @@ const Navigator = () => {
         ) : (
           <SafeAreaView style={styles.signed}>
             <Stack.Navigator
-              initialRouteName={SCREEN.QR_CODE_SCANNER}
+              initialRouteName={SCREEN.HOME_SCREEN}
               headerMode="screen"
               screenOptions={{headerBackTitleVisible: false}}>
-              {PrivateNavigator.map(({name, options, component}) => (
+              {PrivateNavigator.map(({name, title, options, component}) => (
                 <Stack.Screen
                   key={name}
                   name={name}
-                  options={options}
-                  initialParams={{isQRCode: name === SCREEN.QR_CODE_SCANNER}}
+                  options={{
+                    ...options,
+                    title: title ? t(title) : null,
+                  }}
                   component={component}
                 />
               ))}
@@ -59,11 +62,5 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingBottom: 0,
     paddingTop: 0,
-  },
-  notSigned: {
-    flex: 1,
-    paddingBottom: 0,
-    paddingTop: 0,
-    backgroundColor: `#413E3E`,
   },
 });
