@@ -11,6 +11,8 @@ const useUser = () => {
     shallowEqual,
   );
 
+  console.log(user);
+
   const updateUser = useCallback(
     (u) => {
       dispatch(setApp({user: u}));

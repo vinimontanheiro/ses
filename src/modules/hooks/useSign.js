@@ -31,6 +31,7 @@ const useSign = () => {
         await GoogleSignin.hasPlayServices();
       }
       const {user} = await GoogleSignin.signIn();
+      console.log(user);
       const {accessToken} = await GoogleSignin.getTokens();
       if (accessToken) {
         updateUser(user);

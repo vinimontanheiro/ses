@@ -1,5 +1,13 @@
 import React from 'react';
-import {Text, StyleSheet, View, ScrollView, KeyboardAvoidingView, Image} from 'react-native';
+import {
+  Text,
+  StyleSheet,
+  View,
+  ScrollView,
+  KeyboardAvoidingView,
+  Image,
+  TouchableOpacity,
+} from 'react-native';
 import {useTranslation} from 'react-i18next';
 import theme from '../theme';
 import GUIN_IMG from '../../assets/img/guin.png';
@@ -11,53 +19,63 @@ import useUser from '../hooks/useUser';
 
 const HomeScreen = () => {
   const {t} = useTranslation(`home`);
-  const {name} = useUser();
+  const {
+    user: {givenName},
+  } = useUser();
   return (
     <KeyboardAvoidingView style={styles.flex} keyboardShouldPersistTaps="handled">
       <ScrollView style={styles.content} contentContainerStyle={styles.container}>
         <View style={styles.header}>
           <Text style={styles.headerText}>
-            {t(`hello`)}, <Text style={styles.bold}> {name}</Text>
+            {t(`hello`)}, <Text style={styles.bold}> {givenName}</Text>
           </Text>
           <Text style={styles.subTitle}>{t(`choose_some_action_below`)}</Text>
         </View>
         <View style={styles.body}>
-          <View style={styles.box}>
-            <View style={styles.boxContent}>
-              <Image style={styles.image} source={GUIN_IMG} />
-              <View style={styles.boxText}>
-                <Text style={styles.text}>{t(`crane`)}</Text>
+          <TouchableOpacity>
+            <View style={styles.box}>
+              <View style={styles.boxContent}>
+                <Image style={styles.image} source={GUIN_IMG} />
+                <View style={styles.boxText}>
+                  <Text style={styles.text}>{t(`crane`)}</Text>
+                </View>
               </View>
+              <Image style={styles.arrow} source={ARROW_IMG} />
             </View>
-            <Image style={styles.arrow} source={ARROW_IMG} />
-          </View>
-          <View style={[styles.box, {backgroundColor: theme.color.blue3}]}>
-            <View style={styles.boxContent}>
-              <Image style={styles.image} source={DEVICE_IMG} />
-              <View style={styles.boxText}>
-                <Text style={styles.text}>{t(`device`)}</Text>
+          </TouchableOpacity>
+          <TouchableOpacity>
+            <View style={[styles.box, {backgroundColor: theme.color.blue3}]}>
+              <View style={styles.boxContent}>
+                <Image style={styles.image} source={DEVICE_IMG} />
+                <View style={styles.boxText}>
+                  <Text style={styles.text}>{t(`device`)}</Text>
+                </View>
               </View>
+              <Image style={styles.arrow} source={ARROW_IMG} />
             </View>
-            <Image style={styles.arrow} source={ARROW_IMG} />
-          </View>
-          <View style={[styles.box, {backgroundColor: theme.color.blue4}]}>
-            <View style={styles.boxContent}>
-              <Image style={styles.image} source={CALCULATOR_IMG} />
-              <View style={styles.boxText}>
-                <Text style={styles.text}>{t(`calculator`)}</Text>
+          </TouchableOpacity>
+          <TouchableOpacity>
+            <View style={[styles.box, {backgroundColor: theme.color.blue4}]}>
+              <View style={styles.boxContent}>
+                <Image style={styles.image} source={CALCULATOR_IMG} />
+                <View style={styles.boxText}>
+                  <Text style={styles.text}>{t(`calculator`)}</Text>
+                </View>
               </View>
+              <Image style={styles.arrow} source={ARROW_IMG} />
             </View>
-            <Image style={styles.arrow} source={ARROW_IMG} />
-          </View>
-          <View style={[styles.box, {backgroundColor: theme.color.blue5}]}>
-            <View style={styles.boxContent}>
-              <Image style={styles.image} source={SECURITY_IMG} />
-              <View style={styles.boxText}>
-                <Text style={styles.text}>{t(`security`)}</Text>
+          </TouchableOpacity>
+          <TouchableOpacity>
+            <View style={[styles.box, {backgroundColor: theme.color.blue5}]}>
+              <View style={styles.boxContent}>
+                <Image style={styles.image} source={SECURITY_IMG} />
+                <View style={styles.boxText}>
+                  <Text style={styles.text}>{t(`security`)}</Text>
+                </View>
               </View>
+              <Image style={styles.arrow} source={ARROW_IMG} />
             </View>
-            <Image style={styles.arrow} source={ARROW_IMG} />
-          </View>
+          </TouchableOpacity>
         </View>
       </ScrollView>
       <View style={styles.borderEffect} />
