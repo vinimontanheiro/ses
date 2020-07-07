@@ -109,3 +109,5 @@ export const UNITS_CALCULATOR = [
     value: 2,
   },
 ];
+
+export const FIRESTORE_UID = `6xHzwXZFLEbwYiMJc6HH`;

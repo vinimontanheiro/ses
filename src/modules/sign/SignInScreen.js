@@ -47,7 +47,7 @@ const SignInScreen = () => {
               </TouchableHighlight>
 
               <TouchableHighlight
-                style={styles.button}
+                style={[styles.button, {marginTop: 15}]}
                 onPress={handleAppleSignIn}
                 underlayColor={theme.color.defaultLight}>
                 <View style={styles.textBox}>
@@ -98,7 +98,7 @@ const styles = StyleSheet.create({
   },
   box: {
     backgroundColor: theme.color.blue1,
-    flex: 0.16,
+    flex: 0.15,
     borderTopLeftRadius: 25,
     borderTopRightRadius: 25,
     alignItems: `center`,
@@ -107,15 +107,15 @@ const styles = StyleSheet.create({
   button: {
     backgroundColor: `white`,
     paddingHorizontal: 10,
-    paddingVertical: 10,
+    paddingVertical: 8,
     borderRadius: 5,
-    marginVertical: 10,
   },
   textBox: {
     justifyContent: `center`,
     alignItems: `center`,
     flexDirection: `row`,
   },
+
   text: {
     marginLeft: 5,
     fontSize: 16,

@@ -1,6 +1,8 @@
 {
   "error":{
-    "apple_denied": "Apple não autorizou o compartilhamento das suas informações"
+    "apple_denied": "Apple não autorizou o compartilhamento das suas informações",
+    "unauthorized_user": "Usuário não autorizado!",
+    "network_error": "Sem conexão com a internet!"
   },
   "action":{
     "close" : "Fechar",

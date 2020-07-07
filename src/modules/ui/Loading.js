@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
 });
 
 Loading.defaultProps = {
-  overlayerColor: theme.color.underlay,
+  overlayerColor: theme.color.underlayBlue,
   size: `large`,
 };
 
