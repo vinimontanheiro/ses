@@ -1,7 +1,7 @@
 import {useEffect} from 'react';
 import {GoogleSignin} from '@react-native-community/google-signin';
+import SplashScreen from 'react-native-splash-screen';
 import {IS_ANDROID, WEB_CLIENT_ID} from '../../constants';
-// import SplashScreen from 'react-native-splash-screen';
 
 const useBootstrap = () => {
   useEffect(() => {
@@ -14,6 +14,10 @@ const useBootstrap = () => {
         iosClientId: WEB_CLIENT_ID,
       });
     }
+  }, []);
+
+  useEffect(() => {
+    SplashScreen.hide();
   }, []);
 };
 
