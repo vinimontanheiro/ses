@@ -2,6 +2,8 @@ import {SCREEN} from '../constants';
 import HomeScreen from '../modules/home/HomeScreen';
 import SecurityScreen from '../modules/security/SecurityScreen';
 import SecurityItemScreen from '../modules/security/SecurityItemScreen';
+import CalculatorShapeScreen from '../modules/calculator/CalculatorShapeScreen';
+import CalculatorScreen from '../modules/calculator/CalculatorScreen';
 
 import theme from '../modules/theme';
 
@@ -38,6 +40,22 @@ export default [
     name: SCREEN.SECURITY_ITEM_SCREEN,
     component: SecurityItemScreen,
     title: `home:security`,
+    options: {
+      headerStyle,
+    },
+  },
+  {
+    name: SCREEN.CALCULATOR_SHAPE_SCREEN,
+    component: CalculatorShapeScreen,
+    title: `home:calculator`,
+    options: {
+      headerStyle,
+    },
+  },
+  {
+    name: SCREEN.CALCULATOR_SCREEN,
+    component: CalculatorScreen,
+    title: `home:calculator`,
     options: {
       headerStyle,
     },

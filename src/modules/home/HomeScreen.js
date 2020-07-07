@@ -65,7 +65,10 @@ const HomeScreen = () => {
               <Image style={styles.arrow} source={ARROW_IMG} />
             </View>
           </TouchableOpacity>
-          <TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => {
+              handleNavigation(SCREEN.CALCULATOR_SHAPE_SCREEN);
+            }}>
             <View style={[styles.box, {backgroundColor: theme.color.blue4}]}>
               <View style={styles.boxContent}>
                 <Image style={styles.image} source={CALCULATOR_IMG} />

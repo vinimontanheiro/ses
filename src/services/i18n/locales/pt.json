@@ -1,6 +1,7 @@
 {
   "action":{
-    "close" : "Fechar"
+    "close" : "Fechar",
+    "calculate": "Calcular"
   },
   "sign": {
     "join": "Entrar",
@@ -8,7 +9,7 @@
   },
   "home":{
     "hello":"Olá",
-    "choose_some_action_below": "Escolha alguma ação abaixo.",
+    "choose_some_action_below": "Escolha alguma ação abaixo",
     "crane" : "Guindaste",
     "device": "Dispositivo",
     "calculator" : "Calculadora",
@@ -19,5 +20,27 @@
     "shackles": "Manilhas",
     "cables" : "Cabos",
     "angles" : "Ângulos"
+  },
+  "calculator":{
+   "shape1": "Barra Sextavada",
+   "shape2": "Barra redonda",
+   "shape3": "Tubo",
+   "shape4": "Barra quadrada",
+   "shape5": "Tubo quadrado",
+   "shape6": "Perfil T",
+   "shape7": "Perfil I/H",
+   "shape8": "Perfil U",
+   "shape9": "Cantoneira",
+   "shape10": "Barra Chata",
+   "shape11": "Chapa",
+   "choose_which_shape_you_want_to_calculate": "Escolha qual forma você deseja calcular",
+   "diameter": "Diâmetro",
+   "thickness": "Espressura",
+   "length": "Comprimento",
+   "amount_of_pieces": "Quantidade de Peças",
+   "results_kg": "Resultados (KG)",
+   "weight": "Peso",
+   "total_weight" : "Peso total",
+   "steel": "Aço"
   }
 }

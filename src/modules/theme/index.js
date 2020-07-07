@@ -17,7 +17,7 @@ const color = {
   danger: `rgb(255, 0, 0)`,
   warning: `#ffd400`,
   transparent: `transparent`,
-  underlay: `rgba(0,0,0, 0.3)`,
+  underlay: `rgba(0,0,0, 0.1)`,
 };
 
 export default {
