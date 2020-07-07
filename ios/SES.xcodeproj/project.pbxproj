@@ -54,6 +54,7 @@
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = SES/main.m; sourceTree = "<group>"; };
 		2617919124AA2DF200D048E0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2627FC2724B504C80003B512 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		2627FC2924B50AA40003B512 /* SES.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = SES.entitlements; path = SES/SES.entitlements; sourceTree = "<group>"; };
 		2D02E47B1E0B4A5D006451C7 /* SES-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SES-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D02E4901E0B4A5D006451C7 /* SES-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "SES-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		76AF27AB1B83CC1A7A1B9405 /* Pods-SES.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SES.debug.xcconfig"; path = "Target Support Files/Pods-SES/Pods-SES.debug.xcconfig"; sourceTree = "<group>"; };
@@ -127,6 +128,7 @@
 		13B07FAE1A68108700A75B9A /* SES */ = {
 			isa = PBXGroup;
 			children = (
+				2627FC2924B50AA40003B512 /* SES.entitlements */,
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
@@ -725,6 +727,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = SES/SES.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = HG4KEQ74AB;
 				ENABLE_BITCODE = NO;
@@ -753,6 +756,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = SES/SES.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = HG4KEQ74AB;
 				INFOPLIST_FILE = SES/Info.plist;

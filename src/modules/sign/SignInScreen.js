@@ -9,17 +9,17 @@ import {
   Text,
   TouchableHighlight,
 } from 'react-native';
-
 import {useTranslation} from 'react-i18next';
 import useSign from '../hooks/useSign';
 import theme from '../theme';
 import BACKGROUND_IMG from '../../assets/img/background-login.png';
 import LOGO_SIGNIN from '../../assets/img/logo-signin.png';
-import GOOGLE from '../../assets/img/google.png';
+import GOOGLE_IMG from '../../assets/img/google.png';
+import APPLE_IMG from '../../assets/img/apple.png';
 
 const SignInScreen = () => {
   const {t} = useTranslation(`sign`);
-  const {handleGoogleSignIn} = useSign();
+  const {handleGoogleSignIn, handleAppleSignIn} = useSign();
 
   return (
     <KeyboardAvoidingView style={styles.flex} keyboardShouldPersistTaps="handled">
@@ -37,12 +37,21 @@ const SignInScreen = () => {
           <View style={styles.box}>
             <View style={styles.body}>
               <TouchableHighlight
-                style={styles.googleBTN}
+                style={styles.button}
                 onPress={handleGoogleSignIn}
                 underlayColor={theme.color.defaultLight}>
-                <View
-                  style={{justifyContent: `center`, alignItems: `center`, flexDirection: `row`}}>
-                  <Image source={GOOGLE} width={60} height={60} />
+                <View style={styles.textBox}>
+                  <Image source={GOOGLE_IMG} width={32} height={32} />
+                  <Text style={styles.text}>{t(`sign_in_with_google`)}</Text>
+                </View>
+              </TouchableHighlight>
+
+              <TouchableHighlight
+                style={styles.button}
+                onPress={handleAppleSignIn}
+                underlayColor={theme.color.defaultLight}>
+                <View style={styles.textBox}>
+                  <Image source={APPLE_IMG} width={32} height={32} />
                   <Text style={styles.text}>{t(`sign_in_with_google`)}</Text>
                 </View>
               </TouchableHighlight>
@@ -89,18 +98,23 @@ const styles = StyleSheet.create({
   },
   box: {
     backgroundColor: theme.color.blue1,
-    flex: 0.19,
+    flex: 0.16,
     borderTopLeftRadius: 25,
     borderTopRightRadius: 25,
-    padding: 10,
     alignItems: `center`,
     justifyContent: `flex-start`,
   },
-  googleBTN: {
+  button: {
     backgroundColor: `white`,
     paddingHorizontal: 10,
     paddingVertical: 10,
     borderRadius: 5,
+    marginVertical: 10,
+  },
+  textBox: {
+    justifyContent: `center`,
+    alignItems: `center`,
+    flexDirection: `row`,
   },
   text: {
     marginLeft: 5,
