@@ -7,11 +7,12 @@ import {
   KeyboardAvoidingView,
   Image,
   TextInput,
+  TouchableHighlight,
 } from 'react-native';
 import {useTranslation} from 'react-i18next';
 import {Formik} from 'formik';
-import {Picker} from '@react-native-community/picker';
-import {TouchableHighlight} from 'react-native-gesture-handler';
+// import {Picker} from '@react-native-community/picker';
+import {Picker, Icon} from 'native-base';
 import theme from '../theme';
 import {UNITS_CALCULATOR} from '../../constants';
 
@@ -51,11 +52,23 @@ const CalculatorScreen = ({route: {params}}) => {
                       value={`${values.diameter}`}
                       onChangeText={handleChange(`diameter`)}
                       keyboardType="number-pad"
-                      style={styles.border}
+                      style={[styles.input, styles.border]}
                     />
                   </View>
                   <View style={styles.unitBox}>
                     <Picker
+                      iosHeader="Selecione"
+                      headerBackButtonText="Voltar"
+                      iosIcon={
+                        <Icon
+                          style={{
+                            zIndex: 99,
+                            position: `relative`,
+                            right: values.diameterUnit === 1 ? 25 : 15,
+                          }}
+                          name="caret-down-outline"
+                        />
+                      }
                       selectedValue={values.diameterUnit}
                       style={styles.unit}
                       onValueChange={(itemValue) => setFieldValue(`diameterUnit`, itemValue)}>
@@ -75,11 +88,21 @@ const CalculatorScreen = ({route: {params}}) => {
                       value={`${values.thickness}`}
                       onChangeText={handleChange(`thickness`)}
                       keyboardType="number-pad"
-                      style={styles.border}
+                      style={[styles.input, styles.border]}
                     />
                   </View>
                   <View style={styles.unitBox}>
                     <Picker
+                      iosIcon={
+                        <Icon
+                          style={{
+                            zIndex: 99,
+                            position: `relative`,
+                            right: values.thicknessUnit === 1 ? 25 : 15,
+                          }}
+                          name="caret-down-outline"
+                        />
+                      }
                       selectedValue={values.thicknessUnit}
                       style={styles.unit}
                       onValueChange={(itemValue) => setFieldValue(`thicknessUnit`, itemValue)}>
@@ -99,11 +122,21 @@ const CalculatorScreen = ({route: {params}}) => {
                       value={`${values.length}`}
                       onChangeText={handleChange(`length`)}
                       keyboardType="number-pad"
-                      style={styles.border}
+                      style={[styles.input, styles.border]}
                     />
                   </View>
                   <View style={styles.unitBox}>
                     <Picker
+                      iosIcon={
+                        <Icon
+                          style={{
+                            zIndex: 99,
+                            position: `relative`,
+                            right: values.lengthUnit === 1 ? 25 : 15,
+                          }}
+                          name="caret-down-outline"
+                        />
+                      }
                       selectedValue={values.lengthUnit}
                       style={styles.unit}
                       onValueChange={(itemValue) => setFieldValue(`lengthUnit`, itemValue)}>
@@ -115,21 +148,20 @@ const CalculatorScreen = ({route: {params}}) => {
                 </View>
 
                 <View style={styles.amount}>
-                  <Text style={[styles.inputTitle, styles.amountTitle]}>
-                    {t(`amount_of_pieces`)}
-                  </Text>
+                  <View style={styles.amountBox}>
+                    <Text style={[styles.inputTitle, styles.amountTitle]}>
+                      {t(`amount_of_pieces`)}
+                    </Text>
+                  </View>
                   <TextInput
                     value={`${values.amount}`}
                     onChangeText={handleChange(`amount`)}
                     keyboardType="number-pad"
-                    style={[styles.border, styles.amountInput]}
+                    style={[styles.input, styles.border, styles.amountInput]}
                   />
                 </View>
 
-                <TouchableHighlight
-                  containerStyle={styles.button}
-                  style={{color: theme.color.white}}
-                  underlayColor={theme.color.underlay}>
+                <TouchableHighlight style={styles.button} underlayColor={theme.color.underlay}>
                   <Text style={styles.buttonText}>{t(`action:calculate`)}</Text>
                 </TouchableHighlight>
               </>
@@ -183,7 +215,7 @@ const styles = StyleSheet.create({
     backgroundColor: theme.color.white,
   },
   inputTitleBox: {
-    width: `25%`,
+    width: `30%`,
     paddingHorizontal: 5,
     backgroundColor: theme.color.blue6,
     height: 40,
@@ -197,7 +229,10 @@ const styles = StyleSheet.create({
     textAlign: `right`,
   },
   inputBox: {
-    width: `40%`,
+    width: `35%`,
+    height: 40,
+  },
+  input: {
     height: 40,
   },
   border: {
@@ -206,7 +241,7 @@ const styles = StyleSheet.create({
     borderRadius: 3,
   },
   unitBox: {
-    width: 100,
+    width: 90,
     textAlign: `right`,
     position: `relative`,
     borderRadius: 3,
@@ -225,17 +260,19 @@ const styles = StyleSheet.create({
     width: `100%`,
     marginTop: 20,
   },
-  amountInput: {
-    width: `59%`,
+  amountBox: {
+    flexDirection: `row`,
+    justifyContent: `center`,
+    alignItems: `center`,
     height: 40,
-    marginLeft: 10,
-  },
-  amountTitle: {
     backgroundColor: theme.color.blue6,
-    height: 40,
-    textAlignVertical: `center`,
     paddingHorizontal: 8,
     borderRadius: 3,
+  },
+  amountInput: {
+    width: `56%`,
+    height: 40,
+    marginLeft: 10,
   },
   button: {
     marginTop: 20,
