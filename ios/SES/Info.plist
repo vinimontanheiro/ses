@@ -22,18 +22,18 @@
 	<string>????</string>
 	<key>CFBundleURLTypes</key>
 	<array>
-    <dict>
-      <key>CFBundleTypeRole</key>
-      <string>Editor</string>
-      <key>CFBundleURLSchemes</key>
-      <array>
-        <string>com.googleusercontent.apps.119879670298-46v8k2thn6lrme6j86hhpk658m3a4ab9</string>
-        <string>com.googleusercontent.apps.119879670298-v0nd2t43ag4b9oh3lj04rr6n5n2457tl</string>
-      </array>
-    </dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>com.googleusercontent.apps.119879670298-46v8k2thn6lrme6j86hhpk658m3a4ab9</string>
+				<string>com.googleusercontent.apps.119879670298-v0nd2t43ag4b9oh3lj04rr6n5n2457tl</string>
+			</array>
+		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>1</string>
+	<string>$(CURRENT_PROJECT_VERSION)</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppTransportSecurity</key>

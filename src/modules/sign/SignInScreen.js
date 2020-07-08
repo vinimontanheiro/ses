@@ -8,6 +8,7 @@ import {
   ImageBackground,
   Text,
   TouchableHighlight,
+  Platform,
 } from 'react-native';
 import {useTranslation} from 'react-i18next';
 import useSign from '../hooks/useSign';
@@ -16,6 +17,7 @@ import BACKGROUND_IMG from '../../assets/img/background-login.png';
 import LOGO_SIGNIN from '../../assets/img/logo-signin.png';
 import GOOGLE_IMG from '../../assets/img/google.png';
 import APPLE_IMG from '../../assets/img/apple.png';
+import {IS_ANDROID} from '../../constants';
 
 const SignInScreen = () => {
   const {t} = useTranslation(`sign`);
@@ -46,15 +48,17 @@ const SignInScreen = () => {
                 </View>
               </TouchableHighlight>
 
-              <TouchableHighlight
-                style={[styles.button, {marginTop: 15}]}
-                onPress={handleAppleSignIn}
-                underlayColor={theme.color.defaultLight}>
-                <View style={styles.textBox}>
-                  <Image source={APPLE_IMG} width={32} height={32} />
-                  <Text style={styles.text}>{t(`sign_in_with_google`)}</Text>
-                </View>
-              </TouchableHighlight>
+              {!IS_ANDROID && (
+                <TouchableHighlight
+                  style={[styles.button, {marginTop: 15}]}
+                  onPress={handleAppleSignIn}
+                  underlayColor={theme.color.defaultLight}>
+                  <View style={styles.textBox}>
+                    <Image source={APPLE_IMG} width={32} height={32} />
+                    <Text style={styles.text}>{t(`sign_in_with_google`)}</Text>
+                  </View>
+                </TouchableHighlight>
+              )}
             </View>
           </View>
         </ImageBackground>
@@ -98,7 +102,7 @@ const styles = StyleSheet.create({
   },
   box: {
     backgroundColor: theme.color.blue1,
-    flex: 0.15,
+    flex: Platform.select({ios: 0.15, android: 0.2}),
     borderTopLeftRadius: 25,
     borderTopRightRadius: 25,
     alignItems: `center`,
