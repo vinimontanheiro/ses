@@ -21,7 +21,7 @@ import useCalculator from '../hooks/useCalculator';
 const CalculatorScreen = ({route: {params}}) => {
   const [shape] = useState(params.shape);
   const {t} = useTranslation(`calculator`);
-  const {initialValues, result, clearAll, clearResult, calculate} = useCalculator(shape);
+  const {initialValues, result, clearAll, calculate} = useCalculator(shape);
   return (
     <KeyboardAvoidingView style={styles.flex} keyboardShouldPersistTaps="handled">
       <ScrollView style={styles.content} contentContainerStyle={styles.container}>
