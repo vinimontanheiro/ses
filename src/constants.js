@@ -48,9 +48,23 @@ export const ANIMATION_TYPE = {
   ZOOM_IN: `zoomIn`,
 };
 
+export const SHAPE_LABEL = {
+  SHAPE1: `shape1`,
+  SHAPE2: `shape2`,
+  SHAPE3: `shape3`,
+  SHAPE4: `shape4`,
+  SHAPE5: `shape5`,
+  SHAPE6: `shape6`,
+  SHAPE7: `shape7`,
+  SHAPE8: `shape8`,
+  SHAPE9: `shape9`,
+  SHAPE10: `shape10`,
+  SHAPE11: `shape11`,
+};
+
 export const SHAPES_CALCULATOR = [
   {
-    label: `shape1`, // Barra sextavada
+    label: SHAPE_LABEL.SHAPE1, // Barra sextavada
     image: SHAPE1_IMG,
     hasDiameter: true,
     hasLength: true,
@@ -59,7 +73,7 @@ export const SHAPES_CALCULATOR = [
     hasWidth: false,
   },
   {
-    label: `shape2`, // Barra redonda
+    label: SHAPE_LABEL.SHAPE2, // Barra redonda
     image: SHAPE2_IMG,
     hasDiameter: true,
     hasLength: true,
@@ -68,7 +82,7 @@ export const SHAPES_CALCULATOR = [
     hasWidth: false,
   },
   {
-    label: `shape3`, // Tubo
+    label: SHAPE_LABEL.SHAPE3, // Tubo
     image: SHAPE3_IMG,
     hasDiameter: true,
     hasLength: true,
@@ -77,7 +91,7 @@ export const SHAPES_CALCULATOR = [
     hasWidth: false,
   },
   {
-    label: `shape4`, // Barra quadrada
+    label: SHAPE_LABEL.SHAPE4, // Barra quadrada
     image: SHAPE4_IMG,
     hasDiameter: false,
     hasLength: true,
@@ -86,7 +100,7 @@ export const SHAPES_CALCULATOR = [
     hasWidth: false,
   },
   {
-    label: `shape5`, // Tubo quadrado
+    label: SHAPE_LABEL.SHAPE5, // Tubo quadrado
     image: SHAPE5_IMG,
     hasDiameter: false,
     hasLength: true,
@@ -95,23 +109,23 @@ export const SHAPES_CALCULATOR = [
     hasWidth: true,
   },
   {
-    label: `shape6`,
+    label: SHAPE_LABEL.SHAPE6,
     image: SHAPE6_IMG,
   },
   {
-    label: `shape7`,
+    label: SHAPE_LABEL.SHAPE7,
     image: SHAPE7_IMG,
   },
   {
-    label: `shape8`,
+    label: SHAPE_LABEL.SHAPE8,
     image: SHAPE8_IMG,
   },
   {
-    label: `shape9`,
+    label: SHAPE_LABEL.SHAPE9,
     image: SHAPE9_IMG,
   },
   {
-    label: `shape10`,
+    label: SHAPE_LABEL.SHAPE10,
     image: SHAPE10_IMG,
     hasDiameter: false,
     hasLength: true,
@@ -120,7 +134,7 @@ export const SHAPES_CALCULATOR = [
     hasWidth: true,
   },
   {
-    label: `shape11`,
+    label: SHAPE_LABEL.SHAPE11, // Chapa
     image: SHAPE11_IMG,
     hasDiameter: false,
     hasLength: true,
@@ -129,6 +143,12 @@ export const SHAPES_CALCULATOR = [
     hasWidth: true,
   },
 ];
+
+export const UNIT = {
+  CM: 0,
+  MM: 1,
+  POL: 2,
+};
 
 export const UNITS_CALCULATOR = [
   {

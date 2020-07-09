@@ -19,3 +19,5 @@ export const genarateKey = (length = 8) => {
 // export const isImage = (extension) => {
 //   return IMAGE_EXTENSIONS.includes(extension.toLowerCase());
 // };
+
+export const parseValue = (value) => (value ? value.toString().match(/\d+/g).join(`.`) : 0);

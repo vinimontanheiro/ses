@@ -21,7 +21,7 @@ import useCalculator from '../hooks/useCalculator';
 const CalculatorScreen = ({route: {params}}) => {
   const [shape] = useState(params.shape);
   const {t} = useTranslation(`calculator`);
-  const {initialValues, result, clearAll, clearResult} = useCalculator();
+  const {initialValues, result, clearAll, clearResult, calculate} = useCalculator(shape);
   return (
     <KeyboardAvoidingView style={styles.flex} keyboardShouldPersistTaps="handled">
       <ScrollView style={styles.content} contentContainerStyle={styles.container}>
@@ -30,26 +30,27 @@ const CalculatorScreen = ({route: {params}}) => {
           <Image source={shape.image} />
         </View>
         <View style={styles.result}>
-          <View>
-            <Text style={styles.resultTitle}>
-              Peso{` `} <Text style={styles.resultText}>{result.value}</Text>
+          <Text style={styles.resultTitle}>
+            Peso{` `}
+            {` `}
+            <Text style={styles.resultText}>
+              {result.value.toFixed(2)} {`kg`}
             </Text>
-            <Text style={styles.resultTitle}>
-              Peso Total
-              {` `}
-              <Text style={styles.resultText}>{result.value}</Text>
+          </Text>
+          <Text style={styles.resultTitle}>
+            Peso Total
+            {` `}
+            <Text style={styles.resultText}>
+              {result.totalValue.toFixed(2)} {`kg`}
             </Text>
-          </View>
-          <TouchableOpacity style={clearResult}>
-            <Icon name="close-circle-outline" style={{color: theme.color.blue2}} />
-          </TouchableOpacity>
+          </Text>
         </View>
         <View style={styles.body}>
           <Formik
             initialValues={initialValues}
             validateOnBlur={false}
             validateOnChange={false}
-            onSubmit={() => {}}
+            onSubmit={calculate}
             enableReinitialize>
             {({values, handleSubmit, handleChange, setFieldValue, resetForm}) => (
               <>
@@ -251,7 +252,7 @@ const CalculatorScreen = ({route: {params}}) => {
                   </View>
                   <TextInput
                     placeholder="0"
-                    value={values.amount}
+                    value={`${values.amount}`}
                     onChangeText={handleChange(`amount`)}
                     keyboardType="number-pad"
                     style={[styles.input, styles.border, styles.amountInput]}
@@ -404,9 +405,9 @@ const styles = StyleSheet.create({
     borderColor: theme.color.blue2,
     borderWidth: 1,
     borderRadius: 12,
-    justifyContent: `space-between`,
-    flexDirection: `row`,
-    alignItems: `center`,
+    justifyContent: `center`,
+    flexDirection: `column`,
+    alignItems: `flex-start`,
   },
   resultTitle: {
     fontWeight: `bold`,
@@ -415,6 +416,7 @@ const styles = StyleSheet.create({
   resultText: {
     fontSize: 18,
     fontWeight: `normal`,
+    color: theme.color.purpleText,
   },
   clearButton: {
     padding: 5,
