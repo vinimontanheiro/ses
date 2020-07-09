@@ -344,6 +344,7 @@ const styles = StyleSheet.create({
   },
   input: {
     height: 40,
+    textAlign: `center`,
   },
   border: {
     borderWidth: 1,
