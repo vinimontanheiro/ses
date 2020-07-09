@@ -8,17 +8,20 @@ import {
   Image,
   TextInput,
   TouchableHighlight,
+  Platform,
+  TouchableOpacity,
 } from 'react-native';
 import {useTranslation} from 'react-i18next';
 import {Formik} from 'formik';
-// import {Picker} from '@react-native-community/picker';
 import {Picker, Icon} from 'native-base';
 import theme from '../theme';
 import {UNITS_CALCULATOR} from '../../constants';
+import useCalculator from '../hooks/useCalculator';
 
 const CalculatorScreen = ({route: {params}}) => {
   const [shape] = useState(params.shape);
   const {t} = useTranslation(`calculator`);
+  const {initialValues, result, clearAll, clearResult} = useCalculator();
   return (
     <KeyboardAvoidingView style={styles.flex} keyboardShouldPersistTaps="handled">
       <ScrollView style={styles.content} contentContainerStyle={styles.container}>
@@ -26,126 +29,219 @@ const CalculatorScreen = ({route: {params}}) => {
           <Text style={styles.title}>{t(shape.label)}</Text>
           <Image source={shape.image} />
         </View>
+        <View style={styles.result}>
+          <View>
+            <Text style={styles.resultTitle}>
+              Peso{` `} <Text style={styles.resultText}>{result.value}</Text>
+            </Text>
+            <Text style={styles.resultTitle}>
+              Peso Total
+              {` `}
+              <Text style={styles.resultText}>{result.value}</Text>
+            </Text>
+          </View>
+          <TouchableOpacity style={clearResult}>
+            <Icon name="close-circle-outline" style={{color: theme.color.blue2}} />
+          </TouchableOpacity>
+        </View>
         <View style={styles.body}>
           <Formik
-            initialValues={{
-              diameter: 0,
-              diameterUnit: 0,
-              thicknessUnit: 0,
-              thickness: 0,
-              length: 0,
-              lengthUnit: 0,
-              unit: 0,
-              amount: 0,
-            }}
+            initialValues={initialValues}
             validateOnBlur={false}
             validateOnChange={false}
-            onSubmit={() => {}}>
-            {({values, handleSubmit, handleChange, setFieldValue}) => (
+            onSubmit={() => {}}
+            enableReinitialize>
+            {({values, handleSubmit, handleChange, setFieldValue, resetForm}) => (
               <>
-                <View style={styles.box}>
-                  <View style={styles.inputTitleBox}>
-                    <Text style={styles.inputTitle}>{t(`diameter`)}</Text>
+                {shape.hasDiameter && (
+                  <View style={styles.box}>
+                    <View style={styles.inputTitleBox}>
+                      <Text style={styles.inputTitle}>{t(`diameter`)}</Text>
+                    </View>
+                    <View style={styles.inputBox}>
+                      <TextInput
+                        placeholder="0"
+                        value={values.diameter}
+                        onChangeText={handleChange(`diameter`)}
+                        keyboardType="number-pad"
+                        style={[styles.input, styles.border]}
+                      />
+                    </View>
+                    <View style={styles.unitBox}>
+                      <Picker
+                        iosHeader="Selecione"
+                        headerBackButtonText="Voltar"
+                        iosIcon={
+                          <Icon
+                            style={{
+                              zIndex: 99,
+                              position: `relative`,
+                              right: values.diameterUnit === 1 ? 25 : 15,
+                            }}
+                            name="caret-down-outline"
+                          />
+                        }
+                        selectedValue={values.diameterUnit}
+                        style={styles.unit}
+                        onValueChange={(itemValue) => setFieldValue(`diameterUnit`, itemValue)}>
+                        {UNITS_CALCULATOR.map((u) => (
+                          <Picker.Item label={u.label} value={u.value} />
+                        ))}
+                      </Picker>
+                    </View>
                   </View>
-                  <View style={styles.inputBox}>
-                    <TextInput
-                      value={`${values.diameter}`}
-                      onChangeText={handleChange(`diameter`)}
-                      keyboardType="number-pad"
-                      style={[styles.input, styles.border]}
-                    />
-                  </View>
-                  <View style={styles.unitBox}>
-                    <Picker
-                      iosHeader="Selecione"
-                      headerBackButtonText="Voltar"
-                      iosIcon={
-                        <Icon
-                          style={{
-                            zIndex: 99,
-                            position: `relative`,
-                            right: values.diameterUnit === 1 ? 25 : 15,
-                          }}
-                          name="caret-down-outline"
-                        />
-                      }
-                      selectedValue={values.diameterUnit}
-                      style={styles.unit}
-                      onValueChange={(itemValue) => setFieldValue(`diameterUnit`, itemValue)}>
-                      {UNITS_CALCULATOR.map((u) => (
-                        <Picker.Item label={u.label} value={u.value} />
-                      ))}
-                    </Picker>
-                  </View>
-                </View>
+                )}
 
-                <View style={styles.box}>
-                  <View style={styles.inputTitleBox}>
-                    <Text style={styles.inputTitle}>{t(`thickness`)}</Text>
+                {shape.hasThickness && (
+                  <View style={styles.box}>
+                    <View style={styles.inputTitleBox}>
+                      <Text style={styles.inputTitle}>{t(`thickness`)}</Text>
+                    </View>
+                    <View style={styles.inputBox}>
+                      <TextInput
+                        placeholder="0"
+                        value={values.thickness}
+                        onChangeText={handleChange(`thickness`)}
+                        keyboardType="number-pad"
+                        style={[styles.input, styles.border]}
+                      />
+                    </View>
+                    <View style={styles.unitBox}>
+                      <Picker
+                        iosIcon={
+                          <Icon
+                            style={{
+                              zIndex: 99,
+                              position: `relative`,
+                              right: values.thicknessUnit === 1 ? 25 : 15,
+                            }}
+                            name="caret-down-outline"
+                          />
+                        }
+                        selectedValue={values.thicknessUnit}
+                        style={styles.unit}
+                        onValueChange={(itemValue) => setFieldValue(`thicknessUnit`, itemValue)}>
+                        {UNITS_CALCULATOR.map((u) => (
+                          <Picker.Item label={u.label} value={u.value} />
+                        ))}
+                      </Picker>
+                    </View>
                   </View>
-                  <View style={styles.inputBox}>
-                    <TextInput
-                      value={`${values.thickness}`}
-                      onChangeText={handleChange(`thickness`)}
-                      keyboardType="number-pad"
-                      style={[styles.input, styles.border]}
-                    />
-                  </View>
-                  <View style={styles.unitBox}>
-                    <Picker
-                      iosIcon={
-                        <Icon
-                          style={{
-                            zIndex: 99,
-                            position: `relative`,
-                            right: values.thicknessUnit === 1 ? 25 : 15,
-                          }}
-                          name="caret-down-outline"
-                        />
-                      }
-                      selectedValue={values.thicknessUnit}
-                      style={styles.unit}
-                      onValueChange={(itemValue) => setFieldValue(`thicknessUnit`, itemValue)}>
-                      {UNITS_CALCULATOR.map((u) => (
-                        <Picker.Item label={u.label} value={u.value} />
-                      ))}
-                    </Picker>
-                  </View>
-                </View>
+                )}
 
-                <View style={styles.box}>
-                  <View style={styles.inputTitleBox}>
-                    <Text style={styles.inputTitle}>{t(`length`)}</Text>
+                {shape.hasLength && (
+                  <View style={styles.box}>
+                    <View style={styles.inputTitleBox}>
+                      <Text style={styles.inputTitle}>{t(`length`)}</Text>
+                    </View>
+                    <View style={styles.inputBox}>
+                      <TextInput
+                        placeholder="0"
+                        value={values.length}
+                        onChangeText={handleChange(`length`)}
+                        keyboardType="number-pad"
+                        style={[styles.input, styles.border]}
+                      />
+                    </View>
+                    <View style={styles.unitBox}>
+                      <Picker
+                        iosIcon={
+                          <Icon
+                            style={{
+                              zIndex: 99,
+                              position: `relative`,
+                              right: values.lengthUnit === 1 ? 25 : 15,
+                            }}
+                            name="caret-down-outline"
+                          />
+                        }
+                        selectedValue={values.lengthUnit}
+                        style={styles.unit}
+                        onValueChange={(itemValue) => setFieldValue(`lengthUnit`, itemValue)}>
+                        {UNITS_CALCULATOR.map((u) => (
+                          <Picker.Item label={u.label} value={u.value} />
+                        ))}
+                      </Picker>
+                    </View>
                   </View>
-                  <View style={styles.inputBox}>
-                    <TextInput
-                      value={`${values.length}`}
-                      onChangeText={handleChange(`length`)}
-                      keyboardType="number-pad"
-                      style={[styles.input, styles.border]}
-                    />
+                )}
+                {shape.hasHeight && (
+                  <View style={styles.box}>
+                    <View style={styles.inputTitleBox}>
+                      <Text style={styles.inputTitle}>{t(`height`)}</Text>
+                    </View>
+                    <View style={styles.inputBox}>
+                      <TextInput
+                        placeholder="0"
+                        value={values.height}
+                        onChangeText={handleChange(`height`)}
+                        keyboardType="number-pad"
+                        style={[styles.input, styles.border]}
+                      />
+                    </View>
+                    <View style={styles.unitBox}>
+                      <Picker
+                        iosHeader="Selecione"
+                        headerBackButtonText="Voltar"
+                        iosIcon={
+                          <Icon
+                            style={{
+                              zIndex: 99,
+                              position: `relative`,
+                              right: values.heightUnit === 1 ? 25 : 15,
+                            }}
+                            name="caret-down-outline"
+                          />
+                        }
+                        selectedValue={values.heightUnit}
+                        style={styles.unit}
+                        onValueChange={(itemValue) => setFieldValue(`heightUnit`, itemValue)}>
+                        {UNITS_CALCULATOR.map((u) => (
+                          <Picker.Item label={u.label} value={u.value} />
+                        ))}
+                      </Picker>
+                    </View>
                   </View>
-                  <View style={styles.unitBox}>
-                    <Picker
-                      iosIcon={
-                        <Icon
-                          style={{
-                            zIndex: 99,
-                            position: `relative`,
-                            right: values.lengthUnit === 1 ? 25 : 15,
-                          }}
-                          name="caret-down-outline"
-                        />
-                      }
-                      selectedValue={values.lengthUnit}
-                      style={styles.unit}
-                      onValueChange={(itemValue) => setFieldValue(`lengthUnit`, itemValue)}>
-                      {UNITS_CALCULATOR.map((u) => (
-                        <Picker.Item label={u.label} value={u.value} />
-                      ))}
-                    </Picker>
+                )}
+
+                {shape.hasWidth && (
+                  <View style={styles.box}>
+                    <View style={styles.inputTitleBox}>
+                      <Text style={styles.inputTitle}>{t(`width`)}</Text>
+                    </View>
+                    <View style={styles.inputBox}>
+                      <TextInput
+                        placeholder="0"
+                        value={values.width}
+                        onChangeText={handleChange(`width`)}
+                        keyboardType="number-pad"
+                        style={[styles.input, styles.border]}
+                      />
+                    </View>
+                    <View style={styles.unitBox}>
+                      <Picker
+                        iosHeader="Selecione"
+                        headerBackButtonText="Voltar"
+                        iosIcon={
+                          <Icon
+                            style={{
+                              zIndex: 99,
+                              position: `relative`,
+                              right: values.widthUnit === 1 ? 25 : 15,
+                            }}
+                            name="caret-down-outline"
+                          />
+                        }
+                        selectedValue={values.widthUnit}
+                        style={styles.unit}
+                        onValueChange={(itemValue) => setFieldValue(`widthUnit`, itemValue)}>
+                        {UNITS_CALCULATOR.map((u) => (
+                          <Picker.Item label={u.label} value={u.value} />
+                        ))}
+                      </Picker>
+                    </View>
                   </View>
-                </View>
+                )}
 
                 <View style={styles.amount}>
                   <View style={styles.amountBox}>
@@ -154,16 +250,29 @@ const CalculatorScreen = ({route: {params}}) => {
                     </Text>
                   </View>
                   <TextInput
-                    value={`${values.amount}`}
+                    placeholder="0"
+                    value={values.amount}
                     onChangeText={handleChange(`amount`)}
                     keyboardType="number-pad"
                     style={[styles.input, styles.border, styles.amountInput]}
                   />
                 </View>
 
-                <TouchableHighlight style={styles.button} underlayColor={theme.color.underlay}>
+                <TouchableHighlight
+                  style={styles.button}
+                  underlayColor={theme.color.underlay}
+                  onPress={handleSubmit}>
                   <Text style={styles.buttonText}>{t(`action:calculate`)}</Text>
                 </TouchableHighlight>
+
+                <TouchableOpacity
+                  style={styles.clearButton}
+                  onPress={() => {
+                    clearAll();
+                    resetForm();
+                  }}>
+                  <Text style={{color: theme.color.grayText}}>Limpar</Text>
+                </TouchableOpacity>
               </>
             )}
           </Formik>
@@ -184,7 +293,7 @@ const styles = StyleSheet.create({
     flexDirection: `column`,
     alignItems: `center`,
     justifyContent: `center`,
-    paddingTop: 15,
+    paddingTop: 5,
   },
   body: {
     flex: 1,
@@ -193,7 +302,7 @@ const styles = StyleSheet.create({
     flexDirection: `column`,
     alignItems: `center`,
     justifyContent: `flex-start`,
-    paddingVertical: 10,
+    paddingVertical: 5,
     paddingHorizontal: 10,
   },
   header: {
@@ -211,7 +320,7 @@ const styles = StyleSheet.create({
     alignItems: `center`,
     justifyContent: `space-between`,
     width: `100%`,
-    marginTop: 8,
+    marginTop: 5,
     backgroundColor: theme.color.white,
   },
   inputTitleBox: {
@@ -270,14 +379,14 @@ const styles = StyleSheet.create({
     borderRadius: 3,
   },
   amountInput: {
-    width: `56%`,
+    width: Platform.select({ios: `56%`, android: `58.5%`}),
     height: 40,
     marginLeft: 10,
   },
   button: {
     marginTop: 20,
     backgroundColor: theme.color.blue2,
-    width: `90%`,
+    width: `95%`,
     justifyContent: `center`,
     alignItems: `center`,
     borderRadius: 50,
@@ -286,6 +395,32 @@ const styles = StyleSheet.create({
   buttonText: {
     color: theme.color.white,
     fontSize: 18,
+  },
+  result: {
+    width: `95%`,
+    marginTop: 10,
+    paddingVertical: 5,
+    paddingHorizontal: 10,
+    borderColor: theme.color.blue2,
+    borderWidth: 1,
+    borderRadius: 12,
+    justifyContent: `space-between`,
+    flexDirection: `row`,
+    alignItems: `center`,
+  },
+  resultTitle: {
+    fontWeight: `bold`,
+    color: theme.color.blue2,
+  },
+  resultText: {
+    fontSize: 18,
+    fontWeight: `normal`,
+  },
+  clearButton: {
+    padding: 5,
+    width: `95%`,
+    alignItems: `center`,
+    color: theme.color.danger,
   },
 });
 

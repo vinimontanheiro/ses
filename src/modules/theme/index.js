@@ -18,6 +18,7 @@ const color = {
   warning: `#ffd400`,
   transparent: `transparent`,
   underlay: `rgba(0,0,0, 0.1)`,
+  greenLight: `#8AEBBC`,
   underlayBlue: `rgba(13, 158, 250, 0.3)`,
 };
 

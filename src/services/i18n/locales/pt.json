@@ -41,12 +41,14 @@
    "shape11": "Chapa",
    "choose_which_shape_you_want_to_calculate": "Escolha qual forma você deseja calcular",
    "diameter": "Diâmetro",
-   "thickness": "Espressura",
+   "thickness": "Espessura",
    "length": "Comprimento",
    "amount_of_pieces": "Quantidade de Peças",
    "results_kg": "Resultados (KG)",
    "weight": "Peso",
    "total_weight" : "Peso total",
-   "steel": "Aço"
+   "steel": "Aço",
+   "height": "Altura",
+   "width": "Largura"
   }
 }

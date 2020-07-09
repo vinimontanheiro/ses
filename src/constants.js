@@ -50,24 +50,49 @@ export const ANIMATION_TYPE = {
 
 export const SHAPES_CALCULATOR = [
   {
-    label: `shape1`,
+    label: `shape1`, // Barra sextavada
     image: SHAPE1_IMG,
+    hasDiameter: true,
+    hasLength: true,
+    hasThickness: false,
+    hasHeight: false,
+    hasWidth: false,
   },
   {
-    label: `shape2`,
+    label: `shape2`, // Barra redonda
     image: SHAPE2_IMG,
+    hasDiameter: true,
+    hasLength: true,
+    hasThickness: false,
+    hasHeight: false,
+    hasWidth: false,
   },
   {
-    label: `shape3`,
+    label: `shape3`, // Tubo
     image: SHAPE3_IMG,
+    hasDiameter: true,
+    hasLength: true,
+    hasThickness: true,
+    hasHeight: false,
+    hasWidth: false,
   },
   {
-    label: `shape4`,
+    label: `shape4`, // Barra quadrada
     image: SHAPE4_IMG,
+    hasDiameter: false,
+    hasLength: true,
+    hasThickness: false,
+    hasHeight: true,
+    hasWidth: false,
   },
   {
-    label: `shape5`,
+    label: `shape5`, // Tubo quadrado
     image: SHAPE5_IMG,
+    hasDiameter: false,
+    hasLength: true,
+    hasThickness: true,
+    hasHeight: true,
+    hasWidth: true,
   },
   {
     label: `shape6`,
@@ -88,10 +113,20 @@ export const SHAPES_CALCULATOR = [
   {
     label: `shape10`,
     image: SHAPE10_IMG,
+    hasDiameter: false,
+    hasLength: true,
+    hasThickness: false,
+    hasHeight: true,
+    hasWidth: true,
   },
   {
     label: `shape11`,
     image: SHAPE11_IMG,
+    hasDiameter: false,
+    hasLength: true,
+    hasThickness: true,
+    hasHeight: true,
+    hasWidth: true,
   },
 ];
 

@@ -234,7 +234,7 @@ task copyDownloadableDepsToLibs(type: Copy) {
 }
 
 project.ext.vectoricons = [
-    iconFontNames: [ 'MaterialCommunityIcons.ttf', 'Fontisto.ttf' ]
+    iconFontNames: [ 'MaterialCommunityIcons.ttf', 'Ionicons.ttf' ]
 ]
 
 apply from: file("../../node_modules/@react-native-community/cli-platform-android/native_modules.gradle"); applyNativeModulesAppBuildGradle(project)
