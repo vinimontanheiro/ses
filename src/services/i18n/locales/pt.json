@@ -50,5 +50,8 @@
    "steel": "Aço",
    "height": "Altura",
    "width": "Largura"
+  },
+  "device":{
+    "what_piece_weight_will_you_lift" : "Qual peso da peça você irá içar?"
   }
 }

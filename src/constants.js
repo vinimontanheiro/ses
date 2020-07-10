@@ -24,6 +24,7 @@ export const SCREEN = {
   SECURITY_ITEM_SCREEN: `security_item_screen`,
   CALCULATOR_SCREEN: `calculator_screen`,
   CALCULATOR_SHAPE_SCREEN: `calculator_shape_screen`,
+  DEVICE_SCREEN: `device_screen`,
 };
 
 export const ANIMATION_TYPE = {

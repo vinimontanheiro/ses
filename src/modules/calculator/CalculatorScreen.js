@@ -31,15 +31,13 @@ const CalculatorScreen = ({route: {params}}) => {
         </View>
         <View style={styles.result}>
           <Text style={styles.resultTitle}>
-            Peso{` `}
-            {` `}
+            {`${t(`weight`)}  `}
             <Text style={styles.resultText}>
               {result.value.toFixed(2)} {`kg`}
             </Text>
           </Text>
           <Text style={styles.resultTitle}>
-            Peso Total
-            {` `}
+            {`${t(`total_weight`)}  `}
             <Text style={styles.resultText}>
               {result.totalValue.toFixed(2)} {`kg`}
             </Text>
@@ -261,7 +259,7 @@ const CalculatorScreen = ({route: {params}}) => {
 
                 <TouchableHighlight
                   style={styles.button}
-                  underlayColor={theme.color.underlay}
+                  underlayColor={theme.color.underlayBlue}
                   onPress={handleSubmit}>
                   <Text style={styles.buttonText}>{t(`action:calculate`)}</Text>
                 </TouchableHighlight>
