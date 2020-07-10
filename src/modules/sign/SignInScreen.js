@@ -43,7 +43,7 @@ const SignInScreen = () => {
                 onPress={handleGoogleSignIn}
                 underlayColor={theme.color.defaultLight}>
                 <View style={styles.textBox}>
-                  <Image source={GOOGLE_IMG} width={32} height={32} />
+                  <Image source={GOOGLE_IMG} width={30} height={30} />
                   <Text style={styles.text}>{t(`sign_in_with_google`)}</Text>
                 </View>
               </TouchableHighlight>
@@ -55,7 +55,7 @@ const SignInScreen = () => {
                   underlayColor={theme.color.defaultLight}>
                   <View style={styles.textBox}>
                     <Image source={APPLE_IMG} width={32} height={32} />
-                    <Text style={styles.text}>{t(`sign_in_with_google`)}</Text>
+                    <Text style={styles.text}>{t(`sign_in_with_apple`)}</Text>
                   </View>
                 </TouchableHighlight>
               )}
