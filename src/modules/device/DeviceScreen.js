@@ -1,10 +1,11 @@
-import React from 'react';
+import React, {useRef} from 'react';
 import {Item, Input, Accordion, Icon} from 'native-base';
 import {Text, StyleSheet, View, ScrollView, KeyboardAvoidingView} from 'react-native';
 import {useTranslation} from 'react-i18next';
+import useDevice from '../hooks/useDevice';
 import theme from '../theme';
 
-const Manilha = [{title: `Manilha`, content: `Lorem ipsum dolor sit amet`}];
+const Manilha = [{title: `Manilha`, content: `Deverá ser utilizada a milha de`}];
 
 const Fita = [{title: `Fita`, content: `Lorem ipsum dolor sit amet`}];
 
@@ -15,7 +16,7 @@ const HeaderRender = (item, expanded) => {
     <View
       style={{
         backgroundColor: theme.color.blue6,
-        padding: 5,
+        padding: 10,
         flexDirection: `row`,
         justifyContent: `space-between`,
         alignItems: `center`,
@@ -39,7 +40,7 @@ const HeaderRender = (item, expanded) => {
   );
 };
 
-const ContentRender = (item, expanded) => {
+const ContentRender = ({item, shackle}) => {
   return (
     <View
       style={{
@@ -49,10 +50,10 @@ const ContentRender = (item, expanded) => {
         justifyContent: `center`,
         alignItems: `center`,
         width: `100%`,
-        padding: 10,
+        padding: 15,
       }}>
       <Text style={{fontSize: 16, color: theme.color.blue2, fontWeight: `bold`}}>
-        {item.content}
+        {`${item.content} ${shackle}`}
       </Text>
     </View>
   );
@@ -60,6 +61,10 @@ const ContentRender = (item, expanded) => {
 
 const CalculatorShapeScreen = () => {
   const {t} = useTranslation(`device`);
+  const ref = useRef(null);
+  const {onShackleChange, shackle, weight, onWeightChange, shackleOpened} = useDevice();
+
+  console.log(ref);
 
   return (
     <KeyboardAvoidingView style={styles.flex} keyboardShouldPersistTaps="handled">
@@ -69,45 +74,57 @@ const CalculatorShapeScreen = () => {
         </View>
         <View style={styles.body}>
           <Item regular style={{borderRadius: 3}}>
-            <Input style={styles.input} placeholder="0" keyboardType="numeric" />
+            <Input
+              value={weight}
+              style={styles.input}
+              placeholder="0"
+              keyboardType="numeric"
+              onChangeText={onWeightChange}
+            />
             <View style={{paddingHorizontal: 10}}>
               <Text>KG</Text>
             </View>
           </Item>
-          <View style={{width: `100%`, backgroundColor: theme.color.blue6, marginTop: 20}}>
+
+          <View style={[styles.header, {marginTop: 20}]}>
+            <Text style={styles.subTitle}> Escolha uma opção ou mais para resultados</Text>
+          </View>
+          <View style={{width: `100%`, backgroundColor: theme.color.blue6, marginTop: 5}}>
             <Accordion
               style={{borderRadius: 3}}
               contentStyle={{borderRadius: 3}}
               dataArray={Manilha}
-              expanded={false}
+              expanded={shackleOpened}
               renderHeader={HeaderRender}
-              renderContent={ContentRender}
+              renderContent={(item) => ContentRender({item, shackle})}
               expandedIcon="chevron-up-outline"
               icon="chevron-down-outline"
+              onAccordionOpen={onShackleChange}
+              ref={ref}
             />
           </View>
 
-          <View style={{width: `100%`, backgroundColor: theme.color.blue6, marginTop: 20}}>
+          <View style={{width: `100%`, backgroundColor: theme.color.white, marginTop: 10}}>
             <Accordion
               style={{borderRadius: 3}}
               contentStyle={{borderRadius: 3}}
               dataArray={Fita}
               expanded={false}
               renderHeader={HeaderRender}
-              renderContent={ContentRender}
+              renderContent={(item) => ContentRender({item, shackle})}
               expandedIcon="chevron-up-outline"
               icon="chevron-down-outline"
             />
           </View>
 
-          <View style={{width: `100%`, backgroundColor: theme.color.blue6, marginTop: 20}}>
+          <View style={{width: `100%`, backgroundColor: theme.color.blue6, marginTop: 10}}>
             <Accordion
               style={{borderRadius: 3}}
               contentStyle={{borderRadius: 3}}
               dataArray={Cabo}
               expanded={false}
               renderHeader={HeaderRender}
-              renderContent={ContentRender}
+              renderContent={(item) => ContentRender({item, shackle})}
               expandedIcon="chevron-up-outline"
               icon="chevron-down-outline"
             />
