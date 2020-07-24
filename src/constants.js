@@ -18,6 +18,20 @@ import RIBBON5 from './assets/img/ribbons/ribbon5.png';
 import RIBBON6 from './assets/img/ribbons/ribbon6.png';
 import RIBBON7 from './assets/img/ribbons/ribbon7.png';
 import RIBBON8 from './assets/img/ribbons/ribbon8.png';
+import STEEL1 from './assets/img/steels/steel1.png';
+import STEEL2 from './assets/img/steels/steel2.png';
+import STEEL3 from './assets/img/steels/steel3.png';
+import STEEL4 from './assets/img/steels/steel4.png';
+import STEEL5 from './assets/img/steels/steel5.png';
+import STEEL6 from './assets/img/steels/steel6.png';
+import STEEL7 from './assets/img/steels/steel7.png';
+import STEEL8 from './assets/img/steels/steel8.png';
+import STEEL9 from './assets/img/steels/steel9.png';
+import STEEL10 from './assets/img/steels/steel10.png';
+import STEEL11 from './assets/img/steels/steel11.png';
+import STEEL12 from './assets/img/steels/steel12.png';
+import STEEL13 from './assets/img/steels/steel13.png';
+import STEEL14 from './assets/img/steels/steel14.png';
 
 export const IS_DEVELOPMENT = true;
 
@@ -227,5 +241,109 @@ export const RIBBONS = [
     label: `3 e 4 pernas (46°-60°)`,
     value: RIBBON_VALUE.RIBBON8,
     image: RIBBON8,
+  },
+];
+
+export const STEEL_VALUE = {
+  STEEL1: 1,
+  STEEL2: 2,
+  STEEL3: 3,
+  STEEL4: 4,
+  STEEL5: 5,
+  STEEL6: 6,
+  STEEL7: 7,
+  STEEL8: 8,
+  STEEL9: 9,
+  STEEL10: 10,
+  STEEL11: 11,
+  STEEL12: 12,
+  STEEL13: 13,
+  STEEL14: 14,
+};
+
+export const STEELS = [
+  {
+    label: `Simples Vertical`,
+    subLabel: `Single AF`,
+    value: STEEL_VALUE.STEEL1,
+    image: STEEL1,
+  },
+  {
+    label: `Simples Vertical`,
+    subLabel: `Single AA`,
+    value: STEEL_VALUE.STEEL2,
+    image: STEEL2,
+  },
+  {
+    label: `Vertical Duplo`,
+    subLabel: `Basket AF`,
+    value: STEEL_VALUE.STEEL3,
+    image: STEEL3,
+  },
+  {
+    label: `Vertical Duplo`,
+    subLabel: `Basket AA`,
+    value: STEEL_VALUE.STEEL4,
+    image: STEEL4,
+  },
+  {
+    label: `Forca`,
+    subLabel: `Chocker AF`,
+    value: STEEL_VALUE.STEEL5,
+    image: STEEL5,
+  },
+  {
+    label: `Forca`,
+    subLabel: `Chocker AA`,
+    value: STEEL_VALUE.STEEL6,
+    image: STEEL6,
+  },
+  {
+    label: `AF`,
+    subLabel: `2 pernas (0 45°)`,
+    value: STEEL_VALUE.STEEL7,
+    image: STEEL7,
+  },
+  {
+    label: `AA`,
+    subLabel: `2 pernas (0 45°)`,
+    value: STEEL_VALUE.STEEL8,
+    image: STEEL8,
+  },
+  {
+    label: `AF`,
+    subLabel: `2 pernas (45° 60°)`,
+    value: STEEL_VALUE.STEEL9,
+    image: STEEL9,
+  },
+  {
+    label: `AA`,
+    subLabel: `2 pernas (45° 60°)`,
+    value: STEEL_VALUE.STEEL10,
+    image: STEEL10,
+  },
+  {
+    label: `AF`,
+    subLabel: `3 e 4 pernas (0 45°)`,
+    value: STEEL_VALUE.STEEL11,
+    image: STEEL11,
+  },
+  {
+    label: `AA`,
+    subLabel: `3 e 4 pernas (0 45°)`,
+    value: STEEL_VALUE.STEEL12,
+    image: STEEL12,
+  },
+  {
+    label: `AF`,
+    subLabel: `3 e 4 pernas (45° 60°)`,
+    value: STEEL_VALUE.STEEL13,
+    image: STEEL13,
+  },
+  {
+    label: `AA`,
+    subLabel: `3 e 4 pernas (45° 60°)`,
+    value: STEEL_VALUE.STEEL14,
+    image: STEEL14,
   },
 ];

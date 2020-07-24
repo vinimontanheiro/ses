@@ -1,5 +1,5 @@
 import React, {useRef} from 'react';
-import {Item, Input, Accordion, Icon} from 'native-base';
+import {Item, Input, Accordion} from 'native-base';
 import {
   Text,
   StyleSheet,
@@ -8,65 +8,18 @@ import {
   KeyboardAvoidingView,
   TouchableHighlight,
   TouchableOpacity,
-  FlatList,
-  Image,
 } from 'react-native';
 import {useTranslation} from 'react-i18next';
 import useDevice from '../hooks/useDevice';
 import theme from '../theme';
 import RenderHeader from './RenderHeader';
 import RenderContent from './RenderContent';
-import {RIBBONS} from '../../constants';
+import Ribbons from './Ribbons';
+import Steels from './Steels';
 
 const Manilha = [{title: `Manilha`, content: `Deverá ser utilizada a manilha de`}];
-
-const Fita = [{title: `Fita`, content: `Lorem ipsum dolor sit amet`}];
-
-const Cabo = [{title: `Cabo de aço`, content: `Lorem ipsum dolor sit amet`}];
-
-const Ribbons = ({item, onRibbonChange, ribbon, result}) => {
-  return (
-    <View style={styles.optionContainer}>
-      <FlatList
-        style={styles.flatlist}
-        data={RIBBONS}
-        keyExtractor={(row) => row.value}
-        numColumns={2}
-        contentContainerStyle={styles.contentContainerStyle}
-        renderItem={({item: {label, image, value}}) => (
-          <TouchableOpacity
-            style={[
-              styles.optionHandle,
-              {borderColor: ribbon === value ? theme.color.blue4 : theme.color.white},
-            ]}
-            onPress={() => {
-              onRibbonChange(value);
-            }}>
-            <View style={styles.optionContent}>
-              {ribbon === value ? (
-                <Icon
-                  style={[styles.optionIcon, {color: theme.color.blue2}]}
-                  name="radio-button-on-outline"
-                />
-              ) : (
-                <Icon style={styles.optionIcon} name="radio-button-off-outline" />
-              )}
-              <View style={styles.optionImageBox}>
-                <Image style={styles.image} source={image} />
-              </View>
-            </View>
-            <Text style={styles.optionText}>{label}</Text>
-          </TouchableOpacity>
-        )}
-      />
-      {!!result && (
-        <View style={[styles.resultContainer, {backgroundColor: result.backgroundColor}]}>
-          <Text style={[styles.resultBox, {color: result.color}]}>{`${result.label}`}</Text>
-        </View>
-      )}
-    </View>
-  );
-};
+const Fita = [{title: `Fita`}];
+const Cabo = [{title: `Cabo de aço`, content: `Deverá ser utilizado o cabo de aço de`}];
 
 const CalculatorShapeScreen = () => {
   const {t} = useTranslation(`device`);
@@ -90,7 +43,7 @@ const CalculatorShapeScreen = () => {
           <Text style={styles.subTitle}>{t(`what_piece_weight_will_you_lift`)}</Text>
         </View>
         <View style={styles.body}>
-          <Item regular style={{borderRadius: 3}}>
+          <Item regular style={styles.radius3}>
             <Input
               value={weight}
               style={styles.input}
@@ -117,10 +70,10 @@ const CalculatorShapeScreen = () => {
           <View style={[styles.header, {marginTop: 20}]}>
             <Text style={styles.subTitle}> Escolha uma opção ou mais para resultados</Text>
           </View>
-          <View style={{width: `100%`, backgroundColor: theme.color.blue6, marginTop: 5}}>
+          <View style={styles.shackle}>
             <Accordion
-              style={{borderRadius: 3}}
-              contentStyle={{borderRadius: 3}}
+              style={styles.radius3}
+              contentStyle={styles.radius3}
               dataArray={Manilha}
               expanded={shackleOpened}
               renderHeader={(item, expanded) => RenderHeader({item, expanded})}
@@ -132,29 +85,27 @@ const CalculatorShapeScreen = () => {
             />
           </View>
 
-          <View style={{width: `100%`, backgroundColor: theme.color.white, marginTop: 10}}>
+          <View style={styles.ribbon}>
             <Accordion
-              style={{borderRadius: 3}}
-              contentStyle={{borderRadius: 3}}
+              style={styles.radius3}
+              contentStyle={styles.radius3}
               dataArray={Fita}
               expanded={false}
               renderHeader={(item, expanded) => RenderHeader({item, expanded})}
-              renderContent={(item) =>
-                Ribbons({item, onRibbonChange, ribbon, result: ribbonResult})
-              }
+              renderContent={(item) => Ribbons({onRibbonChange, ribbon, result: ribbonResult})}
               expandedIcon="chevron-up-outline"
               icon="chevron-down-outline"
             />
           </View>
 
-          <View style={{width: `100%`, backgroundColor: theme.color.blue6, marginTop: 10}}>
+          <View style={styles.steel}>
             <Accordion
-              style={{borderRadius: 3}}
-              contentStyle={{borderRadius: 3}}
+              style={styles.radius3}
+              contentStyle={styles.radius3}
               dataArray={Cabo}
               expanded={false}
               renderHeader={(item, expanded) => RenderHeader({item, expanded})}
-              renderContent={(item) => RenderContent({item, result: shackle})}
+              renderContent={(item) => Steels({item, onSteelChange: () => true, result: shackle})}
               expandedIcon="chevron-up-outline"
               icon="chevron-down-outline"
             />
@@ -170,11 +121,6 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: theme.color.white,
   },
-  flatlist: {
-    flex: 1,
-    borderTopColor: theme.color.white,
-    borderTopWidth: 2,
-  },
   container: {
     flexGrow: 1,
     flexDirection: `column`,
@@ -189,7 +135,7 @@ const styles = StyleSheet.create({
     flexDirection: `column`,
     alignItems: `center`,
     justifyContent: `flex-start`,
-    paddingVertical: 15,
+    paddingVertical: 5,
   },
   header: {
     width: `95%`,
@@ -222,69 +168,23 @@ const styles = StyleSheet.create({
     alignItems: `center`,
     color: theme.color.danger,
   },
-  optionContainer: {
-    flex: 1,
-    flexDirection: `column`,
-    justifyContent: `flex-start`,
-    alignItems: `center`,
+  shackle: {
     width: `100%`,
-  },
-  contentContainerStyle: {
-    flexDirection: `row`,
-    justifyContent: `space-between`,
-    borderTopColor: theme.color.white,
-    borderTopWidth: 2,
-  },
-  optionHandle: {
-    flexDirection: `column`,
-    width: `50%`,
     backgroundColor: theme.color.blue6,
-    justifyContent: `center`,
-    alignItems: `center`,
-    height: 100,
-    paddingVertical: 5,
-    paddingHorizontal: 10,
-    borderRadius: 3,
-    borderWidth: 2,
+    marginTop: 5,
   },
-  optionContent: {
-    flexDirection: `row`,
-    justifyContent: `flex-start`,
-    alignItems: `center`,
+  ribbon: {
     width: `100%`,
+    backgroundColor: theme.color.white,
+    marginTop: 10,
   },
-  optionIcon: {
-    position: `relative`,
-    top: 10,
-  },
-  optionImageBox: {
-    flex: 0.8,
-    flexDirection: `row`,
-    justifyContent: `center`,
-    alignItems: `center`,
+  steel: {
     width: `100%`,
-  },
-  optionText: {
-    textAlign: `center`,
-    paddingTop: 5,
-  },
-  resultContainer: {
-    borderRadius: 3,
-    borderTopColor: theme.color.white,
-    borderTopWidth: 3,
-    justifyContent: `center`,
-    alignItems: `center`,
-    width: `100%`,
-    padding: 15,
     backgroundColor: theme.color.blue6,
+    marginTop: 10,
   },
-  resultBox: {
-    fontSize: 16,
-    color: theme.color.blue2,
-    fontWeight: `bold`,
-    textShadowColor: `rgba(0, 0, 0,0.3)`,
-    textShadowOffset: {width: 0.1, height: 0.2},
-    textShadowRadius: 1,
+  radius3: {
+    borderRadius: 3,
   },
 });
 
