@@ -28,71 +28,36 @@ const Cabo = [{title: `Cabo de aço`, content: `Lorem ipsum dolor sit amet`}];
 
 const Ribbons = ({item, onRibbonsChange, ribbon}) => {
   return (
-    <View
-      style={{
-        flex: 1,
-        flexDirection: `column`,
-        justifyContent: `flex-start`,
-        alignItems: `center`,
-        width: `100%`,
-      }}>
+    <View style={styles.optionContainer}>
       <FlatList
         style={styles.flatlist}
         data={RIBBONS}
         keyExtractor={(row) => row.value}
         numColumns={2}
-        contentContainerStyle={{
-          flexDirection: `row`,
-          justifyContent: `space-between`,
-          borderTopColor: theme.color.white,
-          borderTopWidth: 2,
-        }}
+        contentContainerStyle={styles.contentContainerStyle}
         renderItem={({item: {label, image, value}}) => (
           <TouchableOpacity
-            style={{
-              flexDirection: `column`,
-              width: `50%`,
-              backgroundColor: theme.color.blue6,
-              justifyContent: `center`,
-              alignItems: `center`,
-              height: 100,
-              paddingVertical: 5,
-              paddingHorizontal: 10,
-              borderRadius: 3,
-              borderColor: ribbon === value ? theme.color.blue4 : theme.color.white,
-              borderWidth: 2,
-            }}
+            style={[
+              styles.optionHandle,
+              {borderColor: ribbon === value ? theme.color.blue4 : theme.color.white},
+            ]}
             onPress={() => {
               onRibbonsChange(value);
             }}>
-            <View
-              style={{
-                flexDirection: `row`,
-                justifyContent: `flex-start`,
-                alignItems: `center`,
-                width: `100%`,
-              }}>
+            <View style={styles.optionContent}>
               {ribbon === value ? (
                 <Icon
-                  style={{position: `relative`, top: 10, color: theme.color.blue2}}
+                  style={[styles.optionIcon, {color: theme.color.blue2}]}
                   name="radio-button-on-outline"
                 />
               ) : (
-                <Icon style={{position: `relative`, top: 10}} name="radio-button-off-outline" />
+                <Icon style={styles.optionIcon} name="radio-button-off-outline" />
               )}
-
-              <View
-                style={{
-                  flex: 0.8,
-                  flexDirection: `row`,
-                  justifyContent: `center`,
-                  alignItems: `center`,
-                  width: `100%`,
-                }}>
+              <View style={styles.optionImageBox}>
                 <Image style={styles.image} source={image} />
               </View>
             </View>
-            <Text style={{textAlign: `center`, paddingTop: 5}}>{label}</Text>
+            <Text style={styles.optionText}>{label}</Text>
           </TouchableOpacity>
         )}
       />
@@ -254,6 +219,52 @@ const styles = StyleSheet.create({
     width: `95%`,
     alignItems: `center`,
     color: theme.color.danger,
+  },
+  optionContainer: {
+    flex: 1,
+    flexDirection: `column`,
+    justifyContent: `flex-start`,
+    alignItems: `center`,
+    width: `100%`,
+  },
+  contentContainerStyle: {
+    flexDirection: `row`,
+    justifyContent: `space-between`,
+    borderTopColor: theme.color.white,
+    borderTopWidth: 2,
+  },
+  optionHandle: {
+    flexDirection: `column`,
+    width: `50%`,
+    backgroundColor: theme.color.blue6,
+    justifyContent: `center`,
+    alignItems: `center`,
+    height: 100,
+    paddingVertical: 5,
+    paddingHorizontal: 10,
+    borderRadius: 3,
+    borderWidth: 2,
+  },
+  optionContent: {
+    flexDirection: `row`,
+    justifyContent: `flex-start`,
+    alignItems: `center`,
+    width: `100%`,
+  },
+  optionIcon: {
+    position: `relative`,
+    top: 10,
+  },
+  optionImageBox: {
+    flex: 0.8,
+    flexDirection: `row`,
+    justifyContent: `center`,
+    alignItems: `center`,
+    width: `100%`,
+  },
+  optionText: {
+    textAlign: `center`,
+    paddingTop: 5,
   },
 });
 
