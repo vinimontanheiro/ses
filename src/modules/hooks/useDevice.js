@@ -3,6 +3,7 @@ import {useCallback, useState} from 'react';
 const useCalculator = () => {
   const [shackle, setShackle] = useState(``);
   const [weight, setWeight] = useState(`1`);
+  const [ribbon, setRibbon] = useState(1);
   const [shackleOpened, setShackleOpened] = useState(false);
 
   const handleShackleOpened = useCallback(
@@ -18,7 +19,6 @@ const useCalculator = () => {
 
   const onShackleChange = useCallback(() => {
     const w = Number(weight);
-    console.log(w);
     if (w > 0 && w <= 500) {
       setShackle(`1/4''`);
     }
@@ -77,6 +77,13 @@ const useCalculator = () => {
     [setWeight],
   );
 
+  const onRibbonsChange = useCallback(
+    (r) => {
+      setRibbon(r);
+    },
+    [setRibbon],
+  );
+
   return {
     onWeightChange,
     onShackleChange,
@@ -84,6 +91,8 @@ const useCalculator = () => {
     shackleOpened,
     weight,
     handleCalculate,
+    onRibbonsChange,
+    ribbon,
   };
 };
 

@@ -10,6 +10,8 @@ import {
   TouchableOpacity,
   FlatList,
   Image,
+  CellRenderer,
+  VirtualizedList,
 } from 'react-native';
 import {useTranslation} from 'react-i18next';
 import useDevice from '../hooks/useDevice';
@@ -24,7 +26,7 @@ const Fita = [{title: `Fita`, content: `Lorem ipsum dolor sit amet`}];
 
 const Cabo = [{title: `Cabo de aço`, content: `Lorem ipsum dolor sit amet`}];
 
-const Ribbons = ({item}) => {
+const Ribbons = ({item, onRibbonsChange, ribbon}) => {
   return (
     <View
       style={{
@@ -32,6 +34,7 @@ const Ribbons = ({item}) => {
         flexDirection: `column`,
         justifyContent: `flex-start`,
         alignItems: `center`,
+        width: `100%`,
       }}>
       <FlatList
         style={styles.flatlist}
@@ -42,9 +45,9 @@ const Ribbons = ({item}) => {
           flexDirection: `row`,
           justifyContent: `space-between`,
           borderTopColor: theme.color.white,
-          borderTopWidth: 3,
+          borderTopWidth: 2,
         }}
-        renderItem={({item: {label, image}}) => (
+        renderItem={({item: {label, image, value}}) => (
           <TouchableOpacity
             style={{
               flexDirection: `column`,
@@ -53,10 +56,14 @@ const Ribbons = ({item}) => {
               justifyContent: `center`,
               alignItems: `center`,
               height: 100,
-              margin: 2,
               paddingVertical: 5,
               paddingHorizontal: 10,
               borderRadius: 3,
+              borderColor: ribbon === value ? theme.color.blue4 : theme.color.white,
+              borderWidth: 2,
+            }}
+            onPress={() => {
+              onRibbonsChange(value);
             }}>
             <View
               style={{
@@ -65,7 +72,15 @@ const Ribbons = ({item}) => {
                 alignItems: `center`,
                 width: `100%`,
               }}>
-              <Icon style={{position: `relative`, top: 10}} name="ellipse-outline" />
+              {ribbon === value ? (
+                <Icon
+                  style={{position: `relative`, top: 10, color: theme.color.blue2}}
+                  name="radio-button-on-outline"
+                />
+              ) : (
+                <Icon style={{position: `relative`, top: 10}} name="radio-button-off-outline" />
+              )}
+
               <View
                 style={{
                   flex: 0.8,
@@ -97,6 +112,8 @@ const CalculatorShapeScreen = () => {
     onWeightChange,
     shackleOpened,
     handleCalculate,
+    onRibbonsChange,
+    ribbon,
   } = useDevice();
 
   console.log(ref);
@@ -157,7 +174,7 @@ const CalculatorShapeScreen = () => {
               dataArray={Fita}
               expanded={false}
               renderHeader={(item, expanded) => RenderHeader({item, expanded})}
-              renderContent={(item) => Ribbons({item})}
+              renderContent={(item) => Ribbons({item, onRibbonsChange, ribbon})}
               expandedIcon="chevron-up-outline"
               icon="chevron-down-outline"
             />

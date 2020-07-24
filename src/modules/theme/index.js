@@ -5,6 +5,7 @@ const color = {
   blue4: `#89D1FF`,
   blue5: `#B2E0FD`,
   blue6: `#EEF5FF`,
+  blue7: `#eff5fc`,
   blueText: `#0E9FFA`,
   grayText: `#706F6F`,
   purpleText: `#9A359A`,
