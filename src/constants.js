@@ -10,6 +10,14 @@ import SHAPE8_IMG from './assets/img/perfil-u.png';
 import SHAPE9_IMG from './assets/img/cantoneira.png';
 import SHAPE10_IMG from './assets/img/barra-chata.png';
 import SHAPE11_IMG from './assets/img/chapa.png';
+import RIBBON1 from './assets/img/ribbons/ribbon1.png';
+import RIBBON2 from './assets/img/ribbons/ribbon2.png';
+import RIBBON3 from './assets/img/ribbons/ribbon3.png';
+import RIBBON4 from './assets/img/ribbons/ribbon4.png';
+import RIBBON5 from './assets/img/ribbons/ribbon5.png';
+import RIBBON6 from './assets/img/ribbons/ribbon6.png';
+import RIBBON7 from './assets/img/ribbons/ribbon7.png';
+import RIBBON8 from './assets/img/ribbons/ribbon8.png';
 
 export const IS_DEVELOPMENT = true;
 
@@ -146,24 +154,67 @@ export const SHAPES_CALCULATOR = [
 ];
 
 export const UNIT = {
-  CM: 0,
-  MM: 1,
-  POL: 2,
+  CM: 1,
+  MM: 2,
+  POL: 3,
 };
 
 export const UNITS_CALCULATOR = [
   {
     label: `cm`,
-    value: 0,
-  },
-  {
-    label: `mm`,
     value: 1,
   },
   {
-    label: `pol`,
+    label: `mm`,
     value: 2,
+  },
+  {
+    label: `pol`,
+    value: 3,
   },
 ];
 
 export const FIRESTORE_UID = `6xHzwXZFLEbwYiMJc6HH`;
+
+export const RIBBONS = [
+  {
+    label: `Vertical`,
+    value: 1,
+    image: RIBBON1,
+  },
+  {
+    label: `Choker`,
+    value: 2,
+    image: RIBBON2,
+  },
+  {
+    label: `Basket`,
+    value: 3,
+    image: RIBBON3,
+  },
+  {
+    label: `90 graus`,
+    value: 4,
+    image: RIBBON4,
+  },
+  {
+    label: `2 pernas (0 -45°)`,
+    value: 5,
+    image: RIBBON5,
+  },
+  {
+    label: `3 e 4 pernas (0 -45°)`,
+    value: 6,
+    image: RIBBON6,
+  },
+  {
+    label: `2 pernas (46° -60°)`,
+    value: 7,
+    image: RIBBON7,
+  },
+  {
+    label: `3 e 4 pernas (46°-60°)`,
+    value: 8,
+    image: RIBBON8,
+  },
+];

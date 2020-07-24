@@ -66,12 +66,15 @@ const useCalculator = () => {
     }
   }, [setShackle, weight]);
 
+  const handleCalculate = useCallback(() => {
+    onShackleChange();
+  }, [onShackleChange]);
+
   const onWeightChange = useCallback(
     (text) => {
       setWeight(text);
-      onShackleChange();
     },
-    [setWeight, onShackleChange],
+    [setWeight],
   );
 
   return {
@@ -80,6 +83,7 @@ const useCalculator = () => {
     shackle,
     shackleOpened,
     weight,
+    handleCalculate,
   };
 };
 
