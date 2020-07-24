@@ -10,8 +10,6 @@ import {
   TouchableOpacity,
   FlatList,
   Image,
-  CellRenderer,
-  VirtualizedList,
 } from 'react-native';
 import {useTranslation} from 'react-i18next';
 import useDevice from '../hooks/useDevice';
@@ -26,7 +24,7 @@ const Fita = [{title: `Fita`, content: `Lorem ipsum dolor sit amet`}];
 
 const Cabo = [{title: `Cabo de aço`, content: `Lorem ipsum dolor sit amet`}];
 
-const Ribbons = ({item, onRibbonsChange, ribbon}) => {
+const Ribbons = ({item, onRibbonChange, ribbon, result}) => {
   return (
     <View style={styles.optionContainer}>
       <FlatList
@@ -42,7 +40,7 @@ const Ribbons = ({item, onRibbonsChange, ribbon}) => {
               {borderColor: ribbon === value ? theme.color.blue4 : theme.color.white},
             ]}
             onPress={() => {
-              onRibbonsChange(value);
+              onRibbonChange(value);
             }}>
             <View style={styles.optionContent}>
               {ribbon === value ? (
@@ -61,8 +59,11 @@ const Ribbons = ({item, onRibbonsChange, ribbon}) => {
           </TouchableOpacity>
         )}
       />
-
-      <RenderContent item={item} />
+      {!!result && (
+        <View style={[styles.resultContainer, {backgroundColor: result.backgroundColor}]}>
+          <Text style={[styles.resultBox, {color: result.color}]}>{`${result.label}`}</Text>
+        </View>
+      )}
     </View>
   );
 };
@@ -77,11 +78,10 @@ const CalculatorShapeScreen = () => {
     onWeightChange,
     shackleOpened,
     handleCalculate,
-    onRibbonsChange,
+    onRibbonChange,
     ribbon,
+    ribbonResult,
   } = useDevice();
-
-  console.log(ref);
 
   return (
     <KeyboardAvoidingView style={styles.flex} keyboardShouldPersistTaps="handled">
@@ -124,7 +124,7 @@ const CalculatorShapeScreen = () => {
               dataArray={Manilha}
               expanded={shackleOpened}
               renderHeader={(item, expanded) => RenderHeader({item, expanded})}
-              renderContent={(item) => RenderContent({item, result: shackle})}
+              renderContent={(item) => RenderContent({item, result: shackle, weight})}
               expandedIcon="chevron-up-outline"
               icon="chevron-down-outline"
               onAccordionOpen={onShackleChange}
@@ -139,7 +139,9 @@ const CalculatorShapeScreen = () => {
               dataArray={Fita}
               expanded={false}
               renderHeader={(item, expanded) => RenderHeader({item, expanded})}
-              renderContent={(item) => Ribbons({item, onRibbonsChange, ribbon})}
+              renderContent={(item) =>
+                Ribbons({item, onRibbonChange, ribbon, result: ribbonResult})
+              }
               expandedIcon="chevron-up-outline"
               icon="chevron-down-outline"
             />
@@ -265,6 +267,24 @@ const styles = StyleSheet.create({
   optionText: {
     textAlign: `center`,
     paddingTop: 5,
+  },
+  resultContainer: {
+    borderRadius: 3,
+    borderTopColor: theme.color.white,
+    borderTopWidth: 3,
+    justifyContent: `center`,
+    alignItems: `center`,
+    width: `100%`,
+    padding: 15,
+    backgroundColor: theme.color.blue6,
+  },
+  resultBox: {
+    fontSize: 16,
+    color: theme.color.blue2,
+    fontWeight: `bold`,
+    textShadowColor: `rgba(0, 0, 0,0.3)`,
+    textShadowOffset: {width: 0.1, height: 0.2},
+    textShadowRadius: 1,
   },
 });
 

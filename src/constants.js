@@ -176,45 +176,56 @@ export const UNITS_CALCULATOR = [
 
 export const FIRESTORE_UID = `6xHzwXZFLEbwYiMJc6HH`;
 
+export const RIBBON_VALUE = {
+  RIBBON1: 1,
+  RIBBON2: 2,
+  RIBBON3: 3,
+  RIBBON4: 4,
+  RIBBON5: 5,
+  RIBBON6: 6,
+  RIBBON7: 7,
+  RIBBON8: 8,
+};
+
 export const RIBBONS = [
   {
     label: `Vertical`,
-    value: 1,
+    value: RIBBON_VALUE.RIBBON1,
     image: RIBBON1,
   },
   {
     label: `Choker`,
-    value: 2,
+    value: RIBBON_VALUE.RIBBON2,
     image: RIBBON2,
   },
   {
     label: `Basket`,
-    value: 3,
+    value: RIBBON_VALUE.RIBBON3,
     image: RIBBON3,
   },
   {
     label: `90 graus`,
-    value: 4,
+    value: RIBBON_VALUE.RIBBON4,
     image: RIBBON4,
   },
   {
     label: `2 pernas (0 -45°)`,
-    value: 5,
+    value: RIBBON_VALUE.RIBBON5,
     image: RIBBON5,
   },
   {
     label: `3 e 4 pernas (0 -45°)`,
-    value: 6,
+    value: RIBBON_VALUE.RIBBON6,
     image: RIBBON6,
   },
   {
     label: `2 pernas (46° -60°)`,
-    value: 7,
+    value: RIBBON_VALUE.RIBBON7,
     image: RIBBON7,
   },
   {
     label: `3 e 4 pernas (46°-60°)`,
-    value: 8,
+    value: RIBBON_VALUE.RIBBON8,
     image: RIBBON8,
   },
 ];
