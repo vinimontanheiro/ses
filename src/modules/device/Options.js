@@ -123,7 +123,7 @@ const styles = StyleSheet.create({
     backgroundColor: theme.color.blue6,
   },
   resultBox: {
-    fontSize: 16,
+    fontSize: 15,
     color: theme.color.blue2,
     fontWeight: `bold`,
     textShadowColor: `rgba(0, 0, 0,0.3)`,
