@@ -160,8 +160,8 @@ export const SHAPES_CALCULATOR = [
 ];
 
 export const UNIT = {
-  CM: 1,
-  MM: 2,
+  MM: 1,
+  CM: 2,
   POL: 3,
 };
 

@@ -62,6 +62,7 @@ const CalculatorScreen = ({route: {params}}) => {
                     </View>
                     <View style={styles.inputBox}>
                       <TextInput
+                        placeholder="0"
                         value={values.diameter}
                         onChangeText={handleChange(`diameter`)}
                         keyboardType="number-pad"

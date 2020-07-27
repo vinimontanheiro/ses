@@ -5,15 +5,15 @@ import {parseValue} from '../../services/utils';
 const useCalculator = (shape) => {
   const initialState = {
     diameter: 0,
-    diameterUnit: 0,
+    diameterUnit: 1,
     thickness: 0,
-    thicknessUnit: 0,
+    thicknessUnit: 1,
     length: 0,
-    lengthUnit: 0,
+    lengthUnit: 1,
     height: 0,
-    heightUnit: 0,
+    heightUnit: 1,
     width: 0,
-    widthUnit: 0,
+    widthUnit: 1,
     amount: 1,
   };
   const [initialValues, setInitialValues] = useState(initialState);
