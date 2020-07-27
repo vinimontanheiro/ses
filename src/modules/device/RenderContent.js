@@ -2,12 +2,10 @@ import React from 'react';
 import {Text, View, StyleSheet} from 'react-native';
 import theme from '../theme';
 
-const RenderContent = ({item, result, weight}) => {
+const RenderContent = ({result}) => {
   return (
     <View style={styles.container}>
-      <Text style={styles.resultBox}>
-        {Number(weight) > 0 ? `${item.content} ${result}` : `${result}`}
-      </Text>
+      <Text style={styles.resultBox}>{result}</Text>
     </View>
   );
 };

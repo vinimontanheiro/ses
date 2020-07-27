@@ -2,9 +2,8 @@ import React from 'react';
 import {Icon} from 'native-base';
 import {Text, StyleSheet, View, TouchableOpacity, FlatList, Image} from 'react-native';
 import theme from '../theme';
-import {RIBBONS} from '../../constants';
 
-const Options = ({item, onChange, selected, result, weight, data}) => {
+const Options = ({onChange, selected, result, data, isCustomResult}) => {
   return (
     <View style={styles.optionContainer}>
       <FlatList
@@ -39,7 +38,7 @@ const Options = ({item, onChange, selected, result, weight, data}) => {
           </TouchableOpacity>
         )}
       />
-      {!item ? (
+      {isCustomResult ? (
         <View
           style={[
             styles.resultContainer,
@@ -51,9 +50,7 @@ const Options = ({item, onChange, selected, result, weight, data}) => {
         </View>
       ) : (
         <View style={[styles.resultContainer, {backgroundColor: theme.color.blue6}]}>
-          <Text style={[styles.resultBox, {color: theme.color.blue2}]}>
-            {Number(weight) > 0 ? `${item.content} ${result}` : `${result}`}
-          </Text>
+          <Text style={[styles.resultBox, {color: theme.color.blue2}]}>{result}</Text>
         </View>
       )}
     </View>

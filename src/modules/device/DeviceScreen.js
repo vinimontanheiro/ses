@@ -17,15 +17,14 @@ import RenderContent from './RenderContent';
 import Options from './Options';
 import {RIBBONS, STEELS} from '../../constants';
 
-const SHACKLE = [{title: `Manilha`, content: `Deverá ser utilizada a manilha de`}];
+const SHACKLE = [{title: `Manilha`}];
 const RIBBON = [{title: `Fita`}];
-const STEEL = [{title: `Cabo de aço`, content: `Deverá ser utilizado o cabo de aço de`}];
+const STEEL = [{title: `Cabo de aço`}];
 
 const CalculatorShapeScreen = () => {
   const {t} = useTranslation(`device`);
   const ref = useRef(null);
   const {
-    onShackleChange,
     clearResult,
     shackle,
     weight,
@@ -81,10 +80,9 @@ const CalculatorShapeScreen = () => {
               dataArray={SHACKLE}
               expanded={shackleOpened}
               renderHeader={(item, expanded) => RenderHeader({item, expanded})}
-              renderContent={(item) => RenderContent({item, result: shackle, weight})}
+              renderContent={(item) => RenderContent({result: shackle})}
               expandedIcon="chevron-up-outline"
               icon="chevron-down-outline"
-              onAccordionOpen={onShackleChange}
               ref={ref}
             />
           </View>
@@ -98,12 +96,11 @@ const CalculatorShapeScreen = () => {
               renderHeader={(item, expanded) => RenderHeader({item, expanded})}
               renderContent={(item) =>
                 Options({
-                  item: null,
                   onChange: onRibbonChange,
                   selected: ribbon,
                   result: ribbonResult,
-                  weight,
                   data: RIBBONS,
+                  isCustomResult: true,
                 })
               }
               expandedIcon="chevron-up-outline"
@@ -120,11 +117,10 @@ const CalculatorShapeScreen = () => {
               renderHeader={(item, expanded) => RenderHeader({item, expanded})}
               renderContent={(item) =>
                 Options({
-                  item,
                   onChange: onSteelChange,
                   selected: steel,
                   result: steelResult,
-                  weight,
+                  isCustomResult: false,
                   data: STEELS,
                 })
               }
