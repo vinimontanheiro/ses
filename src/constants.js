@@ -25,7 +25,7 @@ import STEEL4 from './assets/img/steels/steel4.png';
 import STEEL5 from './assets/img/steels/steel5.png';
 import STEEL6 from './assets/img/steels/steel6.png';
 
-export const IS_DEVELOPMENT = true;
+export const IS_DEVELOPMENT = false;
 
 export const WEB_CLIENT_ID = `119879670298-v0nd2t43ag4b9oh3lj04rr6n5n2457tl.apps.googleusercontent.com`;
 
