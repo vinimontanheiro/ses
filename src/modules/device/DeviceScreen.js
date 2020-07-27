@@ -14,18 +14,19 @@ import useDevice from '../hooks/useDevice';
 import theme from '../theme';
 import RenderHeader from './RenderHeader';
 import RenderContent from './RenderContent';
-import Ribbons from './Ribbons';
-import Steels from './Steels';
+import Options from './Options';
+import {RIBBONS, STEELS} from '../../constants';
 
-const Manilha = [{title: `Manilha`, content: `Deverá ser utilizada a manilha de`}];
-const Fita = [{title: `Fita`}];
-const Cabo = [{title: `Cabo de aço`, content: `Deverá ser utilizado o cabo de aço de`}];
+const SHACKLE = [{title: `Manilha`, content: `Deverá ser utilizada a manilha de`}];
+const RIBBON = [{title: `Fita`}];
+const STEEL = [{title: `Cabo de aço`, content: `Deverá ser utilizado o cabo de aço de`}];
 
 const CalculatorShapeScreen = () => {
   const {t} = useTranslation(`device`);
   const ref = useRef(null);
   const {
     onShackleChange,
+    clearResult,
     shackle,
     weight,
     onWeightChange,
@@ -34,6 +35,9 @@ const CalculatorShapeScreen = () => {
     onRibbonChange,
     ribbon,
     ribbonResult,
+    onSteelChange,
+    steel,
+    steelResult,
   } = useDevice();
 
   return (
@@ -63,7 +67,7 @@ const CalculatorShapeScreen = () => {
             <Text style={styles.buttonText}>{t(`action:calculate`)}</Text>
           </TouchableHighlight>
 
-          <TouchableOpacity style={styles.clearButton}>
+          <TouchableOpacity style={styles.clearButton} onPress={clearResult}>
             <Text style={{color: theme.color.grayText}}>Limpar</Text>
           </TouchableOpacity>
 
@@ -74,7 +78,7 @@ const CalculatorShapeScreen = () => {
             <Accordion
               style={styles.radius3}
               contentStyle={styles.radius3}
-              dataArray={Manilha}
+              dataArray={SHACKLE}
               expanded={shackleOpened}
               renderHeader={(item, expanded) => RenderHeader({item, expanded})}
               renderContent={(item) => RenderContent({item, result: shackle, weight})}
@@ -89,10 +93,19 @@ const CalculatorShapeScreen = () => {
             <Accordion
               style={styles.radius3}
               contentStyle={styles.radius3}
-              dataArray={Fita}
+              dataArray={RIBBON}
               expanded={false}
               renderHeader={(item, expanded) => RenderHeader({item, expanded})}
-              renderContent={(item) => Ribbons({onRibbonChange, ribbon, result: ribbonResult})}
+              renderContent={(item) =>
+                Options({
+                  item: null,
+                  onChange: onRibbonChange,
+                  selected: ribbon,
+                  result: ribbonResult,
+                  weight,
+                  data: RIBBONS,
+                })
+              }
               expandedIcon="chevron-up-outline"
               icon="chevron-down-outline"
             />
@@ -102,10 +115,19 @@ const CalculatorShapeScreen = () => {
             <Accordion
               style={styles.radius3}
               contentStyle={styles.radius3}
-              dataArray={Cabo}
+              dataArray={STEEL}
               expanded={false}
               renderHeader={(item, expanded) => RenderHeader({item, expanded})}
-              renderContent={(item) => Steels({item, onSteelChange: () => true, result: shackle})}
+              renderContent={(item) =>
+                Options({
+                  item,
+                  onChange: onSteelChange,
+                  selected: steel,
+                  result: steelResult,
+                  weight,
+                  data: STEELS,
+                })
+              }
               expandedIcon="chevron-up-outline"
               icon="chevron-down-outline"
             />

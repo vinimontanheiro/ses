@@ -24,14 +24,6 @@ import STEEL3 from './assets/img/steels/steel3.png';
 import STEEL4 from './assets/img/steels/steel4.png';
 import STEEL5 from './assets/img/steels/steel5.png';
 import STEEL6 from './assets/img/steels/steel6.png';
-import STEEL7 from './assets/img/steels/steel7.png';
-import STEEL8 from './assets/img/steels/steel8.png';
-import STEEL9 from './assets/img/steels/steel9.png';
-import STEEL10 from './assets/img/steels/steel10.png';
-import STEEL11 from './assets/img/steels/steel11.png';
-import STEEL12 from './assets/img/steels/steel12.png';
-import STEEL13 from './assets/img/steels/steel13.png';
-import STEEL14 from './assets/img/steels/steel14.png';
 
 export const IS_DEVELOPMENT = true;
 
@@ -175,11 +167,11 @@ export const UNIT = {
 
 export const UNITS_CALCULATOR = [
   {
-    label: `cm`,
+    label: `mm`,
     value: 1,
   },
   {
-    label: `mm`,
+    label: `cm`,
     value: 2,
   },
   {
@@ -263,87 +255,33 @@ export const STEEL_VALUE = {
 
 export const STEELS = [
   {
-    label: `Simples Vertical`,
-    subLabel: `Single AF`,
+    label: `Vertical Simples`,
     value: STEEL_VALUE.STEEL1,
     image: STEEL1,
   },
   {
-    label: `Simples Vertical`,
-    subLabel: `Single AA`,
+    label: `Forca Chocker`,
     value: STEEL_VALUE.STEEL2,
     image: STEEL2,
   },
   {
     label: `Vertical Duplo`,
-    subLabel: `Basket AF`,
     value: STEEL_VALUE.STEEL3,
     image: STEEL3,
   },
   {
-    label: `Vertical Duplo`,
-    subLabel: `Basket AA`,
+    label: `30°`,
     value: STEEL_VALUE.STEEL4,
     image: STEEL4,
   },
   {
-    label: `Forca`,
-    subLabel: `Chocker AF`,
+    label: `45°`,
     value: STEEL_VALUE.STEEL5,
     image: STEEL5,
   },
   {
-    label: `Forca`,
-    subLabel: `Chocker AA`,
+    label: `60°`,
     value: STEEL_VALUE.STEEL6,
     image: STEEL6,
-  },
-  {
-    label: `AF`,
-    subLabel: `2 pernas (0 45°)`,
-    value: STEEL_VALUE.STEEL7,
-    image: STEEL7,
-  },
-  {
-    label: `AA`,
-    subLabel: `2 pernas (0 45°)`,
-    value: STEEL_VALUE.STEEL8,
-    image: STEEL8,
-  },
-  {
-    label: `AF`,
-    subLabel: `2 pernas (45° 60°)`,
-    value: STEEL_VALUE.STEEL9,
-    image: STEEL9,
-  },
-  {
-    label: `AA`,
-    subLabel: `2 pernas (45° 60°)`,
-    value: STEEL_VALUE.STEEL10,
-    image: STEEL10,
-  },
-  {
-    label: `AF`,
-    subLabel: `3 e 4 pernas (0 45°)`,
-    value: STEEL_VALUE.STEEL11,
-    image: STEEL11,
-  },
-  {
-    label: `AA`,
-    subLabel: `3 e 4 pernas (0 45°)`,
-    value: STEEL_VALUE.STEEL12,
-    image: STEEL12,
-  },
-  {
-    label: `AF`,
-    subLabel: `3 e 4 pernas (45° 60°)`,
-    value: STEEL_VALUE.STEEL13,
-    image: STEEL13,
-  },
-  {
-    label: `AA`,
-    subLabel: `3 e 4 pernas (45° 60°)`,
-    value: STEEL_VALUE.STEEL14,
-    image: STEEL14,
   },
 ];

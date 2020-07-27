@@ -4,12 +4,12 @@ import {Text, StyleSheet, View, TouchableOpacity, FlatList, Image} from 'react-n
 import theme from '../theme';
 import {RIBBONS} from '../../constants';
 
-const Ribbons = ({onRibbonChange, ribbon, result}) => {
+const Options = ({item, onChange, selected, result, weight, data}) => {
   return (
     <View style={styles.optionContainer}>
       <FlatList
         style={styles.flatlist}
-        data={RIBBONS}
+        data={data}
         keyExtractor={(row) => row.value}
         numColumns={2}
         contentContainerStyle={styles.contentContainerStyle}
@@ -17,13 +17,13 @@ const Ribbons = ({onRibbonChange, ribbon, result}) => {
           <TouchableOpacity
             style={[
               styles.optionHandle,
-              {borderColor: ribbon === value ? theme.color.blue4 : theme.color.white},
+              {borderColor: selected === value ? theme.color.blue4 : theme.color.white},
             ]}
             onPress={() => {
-              onRibbonChange(value);
+              onChange(value);
             }}>
             <View style={styles.optionContent}>
-              {ribbon === value ? (
+              {selected === value ? (
                 <Icon
                   style={[styles.optionIcon, {color: theme.color.blue2}]}
                   name="radio-button-on-outline"
@@ -39,9 +39,21 @@ const Ribbons = ({onRibbonChange, ribbon, result}) => {
           </TouchableOpacity>
         )}
       />
-      {!!result && (
-        <View style={[styles.resultContainer, {backgroundColor: result.backgroundColor}]}>
-          <Text style={[styles.resultBox, {color: result.color}]}>{`${result.label}`}</Text>
+      {!item ? (
+        <View
+          style={[
+            styles.resultContainer,
+            {backgroundColor: result.backgroundColor || theme.color.blue6},
+          ]}>
+          <Text style={[styles.resultBox, {color: result.color || theme.color.blue2}]}>{`${
+            result.label || result
+          }`}</Text>
+        </View>
+      ) : (
+        <View style={[styles.resultContainer, {backgroundColor: theme.color.blue6}]}>
+          <Text style={[styles.resultBox, {color: theme.color.blue2}]}>
+            {Number(weight) > 0 ? `${item.content} ${result}` : `${result}`}
+          </Text>
         </View>
       )}
     </View>
@@ -120,4 +132,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Ribbons;
+export default Options;
