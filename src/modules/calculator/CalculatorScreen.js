@@ -10,6 +10,7 @@ import {
   TouchableHighlight,
   Platform,
   TouchableOpacity,
+  Dimensions,
 } from 'react-native';
 import {useTranslation} from 'react-i18next';
 import {Formik} from 'formik';
@@ -17,6 +18,8 @@ import {Picker, Icon} from 'native-base';
 import theme from '../theme';
 import {UNITS_CALCULATOR} from '../../constants';
 import useCalculator from '../hooks/useCalculator';
+
+const SCREEN = Dimensions.get(`screen`);
 
 const CalculatorScreen = ({route: {params}}) => {
   const [shape] = useState(params.shape);
@@ -31,15 +34,13 @@ const CalculatorScreen = ({route: {params}}) => {
         </View>
         <View style={styles.result}>
           <Text style={styles.resultTitle}>
-            Peso{` `}
-            {` `}
+            {`${t(`weight`)}  `}
             <Text style={styles.resultText}>
               {result.value.toFixed(2)} {`kg`}
             </Text>
           </Text>
           <Text style={styles.resultTitle}>
-            Peso Total
-            {` `}
+            {`${t(`total_weight`)}  `}
             <Text style={styles.resultText}>
               {result.totalValue.toFixed(2)} {`kg`}
             </Text>
@@ -261,7 +262,7 @@ const CalculatorScreen = ({route: {params}}) => {
 
                 <TouchableHighlight
                   style={styles.button}
-                  underlayColor={theme.color.underlay}
+                  underlayColor={theme.color.underlayBlue}
                   onPress={handleSubmit}>
                   <Text style={styles.buttonText}>{t(`action:calculate`)}</Text>
                 </TouchableHighlight>
@@ -381,7 +382,7 @@ const styles = StyleSheet.create({
     borderRadius: 3,
   },
   amountInput: {
-    width: Platform.select({ios: `56%`, android: `58.5%`}),
+    width: Platform.select({ios: SCREEN.width * 0.535, android: SCREEN.width * 0.56}),
     height: 40,
     marginLeft: 10,
   },

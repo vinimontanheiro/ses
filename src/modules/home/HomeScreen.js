@@ -54,7 +54,10 @@ const HomeScreen = () => {
               <Image style={styles.arrow} source={ARROW_IMG} />
             </View>
           </TouchableOpacity>
-          <TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => {
+              handleNavigation(SCREEN.DEVICE_SCREEN);
+            }}>
             <View style={[styles.box, {backgroundColor: theme.color.blue3}]}>
               <View style={styles.boxContent}>
                 <Image style={styles.image} source={DEVICE_IMG} />

@@ -4,6 +4,7 @@ import SecurityScreen from '../modules/security/SecurityScreen';
 import SecurityItemScreen from '../modules/security/SecurityItemScreen';
 import CalculatorShapeScreen from '../modules/calculator/CalculatorShapeScreen';
 import CalculatorScreen from '../modules/calculator/CalculatorScreen';
+import DeviceScreen from '../modules/device/DeviceScreen';
 
 import theme from '../modules/theme';
 
@@ -56,6 +57,14 @@ export default [
     name: SCREEN.CALCULATOR_SCREEN,
     component: CalculatorScreen,
     title: `home:calculator`,
+    options: {
+      headerStyle,
+    },
+  },
+  {
+    name: SCREEN.DEVICE_SCREEN,
+    component: DeviceScreen,
+    title: `home:device`,
     options: {
       headerStyle,
     },
