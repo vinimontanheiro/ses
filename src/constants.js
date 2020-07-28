@@ -154,7 +154,7 @@ export const SHAPES_CALCULATOR = [
     hasDiameter: false,
     hasLength: true,
     hasThickness: true,
-    hasHeight: true,
+    hasHeight: false,
     hasWidth: true,
   },
 ];

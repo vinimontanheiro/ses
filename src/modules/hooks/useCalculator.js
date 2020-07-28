@@ -68,7 +68,7 @@ const useCalculator = (shape) => {
 
   // Chapa
   const shape11 = useCallback(
-    ({height, width, length, thickness}) => (height * width * thickness * 7.85 * length) / 1000,
+    ({width, length, thickness}) => (width * thickness * 7.85 * length) / 1000,
     [],
   );
 
@@ -152,8 +152,8 @@ const useCalculator = (shape) => {
           break;
         case SHAPE_LABEL.SHAPE11:
           setResult({
-            value: shape11({height, width, length, thickness}),
-            totalValue: shape11({height, width, length, thickness}) * +amount,
+            value: shape11({width, length, thickness}),
+            totalValue: shape11({width, length, thickness}) * +amount,
           });
           break;
         default:
