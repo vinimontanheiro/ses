@@ -15,7 +15,15 @@ import theme from '../theme';
 
 const CraneScreen = () => {
   const {t} = useTranslation(`device`);
-  const {height, weight, radius, onHeightChange, onWeightChange, onRadiusChange} = useCrane();
+  const {
+    height,
+    weight,
+    radius,
+    onHeightChange,
+    onWeightChange,
+    onRadiusChange,
+    clear,
+  } = useCrane();
 
   return (
     <KeyboardAvoidingView style={styles.flex} keyboardShouldPersistTaps="handled">
@@ -54,7 +62,7 @@ const CraneScreen = () => {
           </Item>
 
           <View style={[styles.header, {marginTop: 20}]}>
-            <Text style={styles.subTitle}>Qual o raio de ação??</Text>
+            <Text style={styles.subTitle}>Qual o raio de ação?</Text>
           </View>
           <Item regular style={styles.radius3}>
             <Input
@@ -73,7 +81,7 @@ const CraneScreen = () => {
             <Text style={styles.buttonText}>{t(`action:calculate`)}</Text>
           </TouchableHighlight>
 
-          <TouchableOpacity style={styles.clearButton}>
+          <TouchableOpacity style={styles.clearButton} onPress={clear}>
             <Text style={{color: theme.color.grayText}}>Limpar</Text>
           </TouchableOpacity>
         </View>
