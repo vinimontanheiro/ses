@@ -43,7 +43,10 @@ const HomeScreen = () => {
           <Text style={styles.subTitle}>{t(`choose_some_action_below`)}</Text>
         </View>
         <View style={styles.body}>
-          <TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => {
+              handleNavigation(SCREEN.CRANE_SCREEN);
+            }}>
             <View style={styles.box}>
               <View style={styles.boxContent}>
                 <Image style={styles.image} source={GUIN_IMG} />

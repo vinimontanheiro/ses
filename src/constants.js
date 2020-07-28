@@ -39,6 +39,7 @@ export const SCREEN = {
   CALCULATOR_SCREEN: `calculator_screen`,
   CALCULATOR_SHAPE_SCREEN: `calculator_shape_screen`,
   DEVICE_SCREEN: `device_screen`,
+  CRANE_SCREEN: `crane_screen`,
 };
 
 export const ANIMATION_TYPE = {
