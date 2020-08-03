@@ -13,6 +13,9 @@ import useUser from './useUser';
 import useMessage from './useMessage';
 import useLoading from './useLoading';
 
+const AUTH_COLLECTION = `custom_auth`;
+const SETTINGS_COLLECTION = `settings`;
+
 const useSign = () => {
   const {authSignIn} = useContext(AuthContext);
   const {t} = useTranslation(`error`);
@@ -31,18 +34,24 @@ const useSign = () => {
     async (user) => {
       try {
         setLoading(true);
-        const auth = await firestore().collection(`custom_auth`).doc(FIRESTORE_UID).get();
+        const settings = await firestore().collection(SETTINGS_COLLECTION).doc(FIRESTORE_UID).get();
+        const {restrictAuthEnabled} = settings.data();
+        const auth = await firestore().collection(AUTH_COLLECTION).doc(FIRESTORE_UID).get();
         const {emails} = auth.data();
-        if (emails && emails.includes(user.email)) {
+        if (restrictAuthEnabled) {
+          if (emails && emails.includes(user.email)) {
+            updateUser(user);
+            setToken(user.token);
+          } else {
+            showMessage(t(`unauthorized_user`));
+            await GoogleSignin.revokeAccess();
+            await GoogleSignin.signOut();
+          }
+        } else {
           updateUser(user);
           setToken(user.token);
-          setLoading(false);
-        } else {
-          setLoading(false);
-          showMessage(t(`unauthorized_user`));
-          await GoogleSignin.revokeAccess();
-          await GoogleSignin.signOut();
         }
+        setLoading(false);
       } catch (error) {
         setLoading(false);
         showMessage(t(`network_error`));

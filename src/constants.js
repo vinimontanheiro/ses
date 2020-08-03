@@ -125,8 +125,13 @@ export const SHAPES_CALCULATOR = [
     hasWidth: true,
   },
   {
-    label: SHAPE_LABEL.SHAPE6,
+    label: SHAPE_LABEL.SHAPE6, // Perfil T
     image: SHAPE6_IMG,
+    hasDiameter: false,
+    hasLength: true,
+    hasThickness: true,
+    hasHeight: true,
+    hasWidth: true,
   },
   {
     label: SHAPE_LABEL.SHAPE7,
@@ -139,6 +144,11 @@ export const SHAPES_CALCULATOR = [
   {
     label: SHAPE_LABEL.SHAPE9,
     image: SHAPE9_IMG,
+    hasDiameter: false,
+    hasLength: true,
+    hasThickness: true,
+    hasHeight: false,
+    hasWidth: true,
   },
   {
     label: SHAPE_LABEL.SHAPE10,

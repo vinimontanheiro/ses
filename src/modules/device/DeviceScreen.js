@@ -37,6 +37,9 @@ const CalculatorShapeScreen = () => {
     onSteelChange,
     steel,
     steelResult,
+    shackleRef,
+    ribbonRef,
+    steelRef,
   } = useDevice();
 
   return (
@@ -75,6 +78,7 @@ const CalculatorShapeScreen = () => {
           </View>
           <View style={styles.shackle}>
             <Accordion
+              ref={shackleRef}
               style={styles.radius3}
               contentStyle={styles.radius3}
               dataArray={SHACKLE}
@@ -83,12 +87,12 @@ const CalculatorShapeScreen = () => {
               renderContent={(item) => RenderContent({result: shackle})}
               expandedIcon="chevron-up-outline"
               icon="chevron-down-outline"
-              ref={ref}
             />
           </View>
 
           <View style={styles.ribbon}>
             <Accordion
+              ref={ribbonRef}
               style={styles.radius3}
               contentStyle={styles.radius3}
               dataArray={RIBBON}
@@ -110,6 +114,7 @@ const CalculatorShapeScreen = () => {
 
           <View style={styles.steel}>
             <Accordion
+              ref={steelRef}
               style={styles.radius3}
               contentStyle={styles.radius3}
               dataArray={STEEL}

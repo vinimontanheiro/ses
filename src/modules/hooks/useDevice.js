@@ -1,4 +1,4 @@
-import {useCallback, useState} from 'react';
+import {useCallback, useState, useRef} from 'react';
 import {RIBBON_VALUE, STEEL_VALUE} from '../../constants';
 import theme from '../theme';
 import {parseValue} from '../../services/utils';
@@ -13,6 +13,9 @@ const useCalculator = () => {
     color: theme.color.blue2,
     backgroundColor: theme.color.blue6,
   };
+  const shackleRef = useRef(null);
+  const ribbonRef = useRef(null);
+  const steelRef = useRef(null);
   const [shackle, setShackle] = useState(undefinedResult);
   const [weight, setWeight] = useState(``);
   const [ribbon, setRibbon] = useState(1);
@@ -27,7 +30,26 @@ const useCalculator = () => {
     setSteel(1);
     setRibbonResult(ribbonDefault);
     setSteelResult(undefinedResult);
-  }, [setWeight, setRibbon, setSteel, setRibbonResult, ribbonDefault, undefinedResult]);
+    if (shackleRef) {
+      shackleRef.current.setSelected(-1);
+    }
+    if (ribbonRef) {
+      ribbonRef.current.setSelected(-1);
+    }
+    if (steelRef) {
+      steelRef.current.setSelected(-1);
+    }
+  }, [
+    setWeight,
+    setRibbon,
+    setSteel,
+    setRibbonResult,
+    ribbonDefault,
+    undefinedResult,
+    shackleRef,
+    ribbonRef,
+    steelRef,
+  ]);
 
   const handleShackleResult = useCallback(() => {
     const w = Number(parseValue(weight));
@@ -66,14 +88,11 @@ const useCalculator = () => {
     }
   }, [setShackle, weight, undefinedResult]);
 
-  console.log(ribbonResult);
-
   const handleRibbonResult = useCallback(
     (ribbonValue) => {
       const r = Number(ribbonValue);
       const w = Number(parseValue(weight));
-      console.log(`ribbon >>`, r);
-      console.log(`weight`, w);
+
       if (
         (r === RIBBON_VALUE.RIBBON1 && w > 0 && w <= 1000) ||
         (r === RIBBON_VALUE.RIBBON2 && w > 0 && w <= 800) ||
@@ -475,6 +494,9 @@ const useCalculator = () => {
     onSteelChange,
     steel,
     steelResult,
+    shackleRef,
+    ribbonRef,
+    steelRef,
   };
 };
 

@@ -60,6 +60,19 @@ const useCalculator = (shape) => {
     [],
   );
 
+  // Perfil T
+  const shape6 = useCallback(
+    ({thickness, height, width, length}) =>
+      ((thickness * (width + height - thickness) * 7.85) / 1000) * 1.015 * length,
+    [],
+  );
+
+  // Cantonera
+  const shape9 = useCallback(
+    ({width, thickness, length}) => width + width - (thickness * thickness * 7.85 * length) / 1000,
+    [],
+  );
+
   // Barra chata
   const shape10 = useCallback(
     ({height, width, length}) => (height * width * 7.85 * length) / 1000,
@@ -136,14 +149,22 @@ const useCalculator = (shape) => {
             totalValue: shape5({thickness, height, width, length}) * +amount,
           });
           break;
-        // case SHAPE_LABEL.SHAPE6:
-        //   break;
+        case SHAPE_LABEL.SHAPE6:
+          setResult({
+            value: shape6({thickness, height, width, length}),
+            totalValue: shape6({thickness, height, width, length}) * +amount,
+          });
+          break;
         // case SHAPE_LABEL.SHAPE7:
         //   break;
         // case SHAPE_LABEL.SHAPE8:
         //   break;
-        // case SHAPE_LABEL.SHAPE9:
-        //   break;
+        case SHAPE_LABEL.SHAPE9:
+          setResult({
+            value: shape9({width, thickness, length}),
+            totalValue: shape9({width, thickness, length}) * +amount,
+          });
+          break;
         case SHAPE_LABEL.SHAPE10:
           setResult({
             value: shape10({height, width, length}),
@@ -168,10 +189,10 @@ const useCalculator = (shape) => {
       shape3,
       shape4,
       shape5,
-      // shape6,
+      shape6,
       // shape7,
       // shape8,
-      // shape9,
+      shape9,
       shape10,
       shape11,
       setResult,
