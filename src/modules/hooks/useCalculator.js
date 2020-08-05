@@ -1,5 +1,5 @@
 import {useCallback, useState} from 'react';
-import {SHAPE_LABEL, UNIT} from '../../constants';
+import {SHAPE_LABEL, UNIT, PROFILE_IH_VALUES, PROFILE_U_VALUES} from '../../constants';
 import {parseValue} from '../../services/utils';
 
 const useCalculator = (shape) => {
@@ -16,7 +16,24 @@ const useCalculator = (shape) => {
     widthUnit: 1,
     amount: 1,
   };
+
+  const initialProfile =
+    shape.label === SHAPE_LABEL.SHAPE7 ? PROFILE_IH_VALUES[0] : PROFILE_U_VALUES[0];
+
+  const initialProfileState = {
+    length: `1000`,
+    height: 0,
+    thicknessUnit: 1,
+    amount: 1,
+    lengthUnit: 1,
+    heightUnit: 1,
+    widthUnit: 1,
+    ...initialProfile,
+  };
+
   const [initialValues, setInitialValues] = useState(initialState);
+  const [initialProfileValues, setInitialProfileValues] = useState(initialProfileState);
+
   const [result, setResult] = useState({value: 0, totalValue: 0});
 
   const clearResult = useCallback(() => {
@@ -26,10 +43,12 @@ const useCalculator = (shape) => {
   const clearAll = useCallback(() => {
     clearResult();
     setInitialValues(initialState);
-  }, [clearResult, setInitialValues, initialState]);
+    setInitialProfileValues(initialProfileState);
+  }, [clearResult, setInitialValues, setInitialProfileValues, initialProfileState, initialState]);
 
   const mm2cm = useCallback((value) => Number(value) / 10, []);
   const pol2cm = useCallback((value) => Number(value) * 2.54, []);
+  const mm2meter = useCallback((value) => Number(value) / 1000, []);
 
   // Barra sextavada
   const shape1 = useCallback(
@@ -199,7 +218,27 @@ const useCalculator = (shape) => {
     ],
   );
 
-  return {clearAll, clearResult, initialValues, result, calculate};
+  const handleProfileCalculate = useCallback(
+    ({length, height, amount, values}) => {
+      const profile = values[height];
+      const lengthMeters = mm2meter(length);
+      const value = profile.weight * lengthMeters;
+      const totalValue = value * amount;
+      setResult({value, totalValue});
+      setInitialProfileValues({...profile, length, amount, height});
+    },
+    [setResult, setInitialProfileValues, mm2meter],
+  );
+
+  return {
+    clearAll,
+    clearResult,
+    initialValues,
+    initialProfileValues,
+    result,
+    calculate,
+    handleProfileCalculate,
+  };
 };
 
 export default useCalculator;

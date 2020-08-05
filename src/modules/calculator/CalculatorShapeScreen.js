@@ -11,7 +11,7 @@ import {
 import {useTranslation} from 'react-i18next';
 import {useNavigation} from '@react-navigation/native';
 import theme from '../theme';
-import {SHAPES_CALCULATOR, SCREEN} from '../../constants';
+import {SHAPES_CALCULATOR, SCREEN, SHAPE_LABEL} from '../../constants';
 
 const CalculatorShapeScreen = () => {
   const {t} = useTranslation(`calculator`);
@@ -19,7 +19,11 @@ const CalculatorShapeScreen = () => {
 
   const handleNavigation = useCallback(
     (shape) => {
-      navigation.navigate(SCREEN.CALCULATOR_SCREEN, {shape});
+      if (shape.label === SHAPE_LABEL.SHAPE7 || shape.label === SHAPE_LABEL.SHAPE8) {
+        navigation.navigate(SCREEN.CALCULATOR_PROFILE_SCREEN, {shape});
+      } else {
+        navigation.navigate(SCREEN.CALCULATOR_SCREEN, {shape});
+      }
     },
     [navigation],
   );

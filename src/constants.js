@@ -37,6 +37,7 @@ export const SCREEN = {
   SECURITY_SCREEN: `security_screen`,
   SECURITY_ITEM_SCREEN: `security_item_screen`,
   CALCULATOR_SCREEN: `calculator_screen`,
+  CALCULATOR_PROFILE_SCREEN: `calculator_profile_screen`,
   CALCULATOR_SHAPE_SCREEN: `calculator_shape_screen`,
   DEVICE_SCREEN: `device_screen`,
   CRANE_SCREEN: `crane_screen`,
@@ -77,6 +78,109 @@ export const SHAPE_LABEL = {
   SHAPE10: `shape10`,
   SHAPE11: `shape11`,
 };
+
+export const PROFILE_IH = [80, 100, 120, 140, 160, 180, 200, 240, 270, 300];
+export const PROFILE_IH_VALUES = [
+  {
+    width: `46`,
+    thickness: `3.8`,
+    weight: 6.2,
+  },
+  {
+    width: `55`,
+    thickness: `4.1`,
+    weight: 8.3,
+  },
+  {
+    width: `64`,
+    thickness: `4.4`,
+    weight: 10.7,
+  },
+  {
+    width: `73`,
+    thickness: `4.7`,
+    weight: 13.2,
+  },
+  {
+    width: `82`,
+    thickness: `5`,
+    weight: 16.2,
+  },
+  {
+    width: `91`,
+    thickness: `5.3`,
+    weight: 19.3,
+  },
+  {
+    width: `100`,
+    thickness: `5.6`,
+    weight: 23,
+  },
+  {
+    width: `110`,
+    thickness: `5.9`,
+    weight: 31.5,
+  },
+  {
+    width: `135`,
+    thickness: `6.6`,
+    weight: 37,
+  },
+  {
+    width: `150`,
+    thickness: `7.1`,
+    weight: 43.3,
+  },
+];
+
+export const PROFILE_U = [80, 100, 120, 140, 160, 180, 200, 240, 300];
+export const PROFILE_U_VALUES = [
+  {
+    width: `45`,
+    thickness: `6`,
+    weight: 8.9,
+  },
+  {
+    width: `50`,
+    thickness: `6`,
+    weight: 10.9,
+  },
+  {
+    width: `55`,
+    thickness: `7`,
+    weight: 13.7,
+  },
+  {
+    width: `60`,
+    thickness: `7`,
+    weight: 16.4,
+  },
+  {
+    width: `65`,
+    thickness: `7.5`,
+    weight: 19.3,
+  },
+  {
+    width: `70`,
+    thickness: `8`,
+    weight: 22.5,
+  },
+  {
+    width: `75`,
+    thickness: `8.5`,
+    weight: 26,
+  },
+  {
+    width: `85`,
+    thickness: `9.5`,
+    weight: 33.2,
+  },
+  {
+    width: `100`,
+    thickness: `10`,
+    weight: 46.2,
+  },
+];
 
 export const SHAPES_CALCULATOR = [
   {
@@ -136,10 +240,14 @@ export const SHAPES_CALCULATOR = [
   {
     label: SHAPE_LABEL.SHAPE7,
     image: SHAPE7_IMG,
+    data: PROFILE_IH,
+    values: PROFILE_IH_VALUES,
   },
   {
     label: SHAPE_LABEL.SHAPE8,
     image: SHAPE8_IMG,
+    data: PROFILE_U,
+    values: PROFILE_U_VALUES,
   },
   {
     label: SHAPE_LABEL.SHAPE9,

@@ -4,6 +4,7 @@ import SecurityScreen from '../modules/security/SecurityScreen';
 import SecurityItemScreen from '../modules/security/SecurityItemScreen';
 import CalculatorShapeScreen from '../modules/calculator/CalculatorShapeScreen';
 import CalculatorScreen from '../modules/calculator/CalculatorScreen';
+import CalculatorProfileScreen from '../modules/calculator/CalculatorProfileScreen';
 import DeviceScreen from '../modules/device/DeviceScreen';
 import CraneScreen from '../modules/crane/CraneScreen';
 
@@ -74,6 +75,14 @@ export default [
     name: SCREEN.CRANE_SCREEN,
     component: CraneScreen,
     title: `home:crane`,
+    options: {
+      headerStyle,
+    },
+  },
+  {
+    name: SCREEN.CALCULATOR_PROFILE_SCREEN,
+    component: CalculatorProfileScreen,
+    title: `home:calculator`,
     options: {
       headerStyle,
     },

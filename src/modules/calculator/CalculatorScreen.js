@@ -368,7 +368,6 @@ const styles = StyleSheet.create({
   },
   amount: {
     flexDirection: `row`,
-    justifyContent: `space-between`,
     alignItems: `center`,
     width: `100%`,
     marginTop: 20,
@@ -385,6 +384,7 @@ const styles = StyleSheet.create({
   amountInput: {
     width: Platform.select({ios: SCREEN.width * 0.535, android: SCREEN.width * 0.56}),
     height: 40,
+    marginLeft: 10,
   },
   button: {
     marginTop: 20,

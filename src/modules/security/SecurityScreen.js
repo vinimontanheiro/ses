@@ -55,6 +55,13 @@ const SecurityScreen = () => {
             }}>
             <Text style={styles.text}>{t(`angles`)}</Text>
           </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.box}
+            onPress={() => {
+              handleNavigation(`patolamento`);
+            }}>
+            <Text style={styles.text}>{t(`patolamento`)}</Text>
+          </TouchableOpacity>
         </View>
       </ScrollView>
       <View style={styles.borderEffect} />

@@ -25,7 +25,8 @@
     "braces" :"Cintas",
     "shackles": "Manilhas",
     "cables" : "Cabos",
-    "angles" : "Ângulos"
+    "angles" : "Ângulos",
+    "patolamento": "Patolamento"
   },
   "calculator":{
    "shape1": "Barra Sextavada",
