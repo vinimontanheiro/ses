@@ -221,13 +221,13 @@ const useCalculator = (shape) => {
   const handleProfileCalculate = useCallback(
     ({length, height, amount, values}) => {
       const profile = values[height];
-      const lengthMeters = mm2meter(length);
+      const lengthMeters = mm2meter(Number(parseValue(length)));
       const value = profile.weight * lengthMeters;
       const totalValue = value * amount;
       setResult({value, totalValue});
-      setInitialProfileValues({...profile, length, amount, height});
+      setInitialProfileValues({...initialProfileState, ...profile, length, amount, height});
     },
-    [setResult, setInitialProfileValues, mm2meter],
+    [setResult, initialProfileState, setInitialProfileValues, mm2meter],
   );
 
   return {

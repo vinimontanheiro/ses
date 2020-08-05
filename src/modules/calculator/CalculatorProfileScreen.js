@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import {
   Text,
   StyleSheet,
@@ -24,7 +24,13 @@ const SCREEN = Dimensions.get(`screen`);
 const CalculatorProfileScreen = ({route: {params}}) => {
   const [shape] = useState(params.shape);
   const {t} = useTranslation(`calculator`);
-  const {initialProfileValues, result, clearAll, handleProfileCalculate} = useCalculator(shape);
+  const {
+    initialProfileValues,
+    result,
+    clearAll,
+    handleProfileCalculate,
+    clearResult,
+  } = useCalculator(shape);
 
   return (
     <KeyboardAvoidingView style={styles.flex} keyboardShouldPersistTaps="handled">
@@ -66,26 +72,18 @@ const CalculatorProfileScreen = ({route: {params}}) => {
                     <Picker
                       iosHeader="Selecione"
                       headerBackButtonText="Voltar"
-                      iosIcon={
-                        <Icon
-                          // style={{
-                          //   zIndex: 99,
-                          //   position: `relative`,
-                          //   right: values.heightUnit === 1 ? 25 : 15,
-                          // }}
-                          name="caret-down-outline"
-                        />
-                      }
+                      iosIcon={<Icon name="caret-down-outline" />}
                       selectedValue={values.height}
                       style={styles.unit}
                       onValueChange={(height) => {
+                        clearResult();
                         const {width, thickness} = shape.values[height];
                         setFieldValue(`height`, height);
                         setFieldValue(`width`, width);
                         setFieldValue(`thickness`, thickness);
                       }}>
                       {shape.data.map((p, i) => (
-                        <Picker.Item label={p.toString()} value={i} />
+                        <Picker.Item key={p} label={p.toString()} value={i} />
                       ))}
                     </Picker>
                   </View>
@@ -101,20 +99,24 @@ const CalculatorProfileScreen = ({route: {params}}) => {
                       value={values.width}
                       onChangeText={handleChange(`width`)}
                       keyboardType="number-pad"
-                      style={[styles.input, styles.border]}
+                      style={[styles.input, styles.border, styles.disabled]}
                       editable={false}
                     />
                   </View>
                   <View style={styles.unitBox}>
                     <Picker
                       enabled={false}
+                      itemStyle={styles.disabled}
+                      itemTextStyle={styles.disabled}
                       iosIcon={
                         <Icon
                           style={{
                             zIndex: 99,
                             position: `relative`,
                             right: values.widthUnit === 1 ? 25 : 15,
+                            ...styles.disabled,
                           }}
+                          color={styles.disabled.color}
                           name="caret-down-outline"
                         />
                       }
@@ -122,7 +124,7 @@ const CalculatorProfileScreen = ({route: {params}}) => {
                       style={[styles.unit, styles.disabled]}
                       onValueChange={(itemValue) => setFieldValue(`widthUnit`, itemValue)}>
                       {UNITS_CALCULATOR.map((u) => (
-                        <Picker.Item label={u.label} value={u.value} />
+                        <Picker.Item key={u} label={u.label} value={u.value} />
                       ))}
                     </Picker>
                   </View>
@@ -138,7 +140,7 @@ const CalculatorProfileScreen = ({route: {params}}) => {
                       value={values.thickness}
                       onChangeText={handleChange(`thickness`)}
                       keyboardType="number-pad"
-                      style={[styles.input, styles.border]}
+                      style={[styles.input, styles.border, styles.disabled]}
                       editable={false}
                     />
                   </View>
@@ -147,13 +149,17 @@ const CalculatorProfileScreen = ({route: {params}}) => {
                       enabled={false}
                       iosHeader="Selecione"
                       headerBackButtonText="Voltar"
+                      itemStyle={styles.disabled}
+                      itemTextStyle={styles.disabled}
                       iosIcon={
                         <Icon
                           style={{
                             zIndex: 99,
                             position: `relative`,
                             right: values.thicknessUnit === 1 ? 25 : 15,
+                            ...styles.disabled,
                           }}
+                          color={styles.disabled.color}
                           name="caret-down-outline"
                         />
                       }
@@ -161,7 +167,7 @@ const CalculatorProfileScreen = ({route: {params}}) => {
                       style={[styles.unit, styles.disabled]}
                       onValueChange={(itemValue) => setFieldValue(`thicknessUnit`, itemValue)}>
                       {UNITS_CALCULATOR.map((u) => (
-                        <Picker.Item label={u.label} value={u.value} />
+                        <Picker.Item key={u} label={u.label} value={u.value} />
                       ))}
                     </Picker>
                   </View>
@@ -184,13 +190,17 @@ const CalculatorProfileScreen = ({route: {params}}) => {
                   <View style={styles.unitBox}>
                     <Picker
                       enabled={false}
+                      itemStyle={styles.disabled}
+                      itemTextStyle={styles.disabled}
                       iosIcon={
                         <Icon
                           style={{
                             zIndex: 99,
                             position: `relative`,
                             right: values.lengthUnit === 1 ? 25 : 15,
+                            ...styles.disabled,
                           }}
+                          color={styles.disabled.color}
                           name="caret-down-outline"
                         />
                       }
@@ -198,7 +208,7 @@ const CalculatorProfileScreen = ({route: {params}}) => {
                       style={[styles.unit, styles.disabled]}
                       onValueChange={(itemValue) => setFieldValue(`lengthUnit`, itemValue)}>
                       {UNITS_CALCULATOR.map((u) => (
-                        <Picker.Item label={u.label} value={u.value} />
+                        <Picker.Item key={u} label={u.label} value={u.value} />
                       ))}
                     </Picker>
                   </View>
@@ -329,7 +339,7 @@ const styles = StyleSheet.create({
     height: 40,
   },
   disabled: {
-    color: theme.color.default,
+    color: `#aaaaaa`,
   },
   title: {
     fontSize: 20,
