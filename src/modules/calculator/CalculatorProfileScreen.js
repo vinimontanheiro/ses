@@ -10,7 +10,6 @@ import {
   TouchableHighlight,
   Platform,
   TouchableOpacity,
-  Dimensions,
 } from 'react-native';
 import {useTranslation} from 'react-i18next';
 import {Formik} from 'formik';
@@ -18,8 +17,6 @@ import {Picker, Icon} from 'native-base';
 import theme from '../theme';
 import {UNITS_CALCULATOR} from '../../constants';
 import useCalculator from '../hooks/useCalculator';
-
-const SCREEN = Dimensions.get(`screen`);
 
 const CalculatorProfileScreen = ({route: {params}}) => {
   const [shape] = useState(params.shape);
@@ -371,6 +368,7 @@ const styles = StyleSheet.create({
   },
   amount: {
     flexDirection: `row`,
+    justifyContent: `space-between`,
     alignItems: `center`,
     width: `100%`,
     marginTop: 20,
@@ -385,7 +383,7 @@ const styles = StyleSheet.create({
     borderRadius: 3,
   },
   amountInput: {
-    width: Platform.select({ios: SCREEN.width * 0.535, android: SCREEN.width * 0.56}),
+    width: Platform.select({ios: `53%`, android: `51.5%`}),
     height: 40,
     marginLeft: 10,
   },
