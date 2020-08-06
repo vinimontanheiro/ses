@@ -87,6 +87,31 @@ const CalculatorProfileScreen = ({route: {params}}) => {
                       ))}
                     </Picker>
                   </View>
+                  <View style={styles.unitBox}>
+                    <Picker
+                      enabled={false}
+                      itemStyle={styles.disabled}
+                      itemTextStyle={styles.disabled}
+                      iosIcon={
+                        <Icon
+                          style={{
+                            zIndex: 99,
+                            position: `relative`,
+                            right: values.heightUnit === 1 ? 25 : 15,
+                            ...styles.disabled,
+                          }}
+                          color={styles.disabled.color}
+                          name="caret-down-outline"
+                        />
+                      }
+                      selectedValue={values.heightUnit}
+                      style={[styles.unit, styles.disabled]}
+                      onValueChange={(itemValue) => setFieldValue(`heightUnit`, itemValue)}>
+                      {UNITS_CALCULATOR.map((u) => (
+                        <Picker.Item key={u} label={u.label} value={u.value} />
+                      ))}
+                    </Picker>
+                  </View>
                 </View>
 
                 <View style={styles.box}>
@@ -329,7 +354,7 @@ const styles = StyleSheet.create({
     borderColor: theme.color.blue4,
   },
   height: {
-    width: `64%`,
+    width: `35%`,
     height: 40,
     borderRadius: 3,
     borderWidth: 1,

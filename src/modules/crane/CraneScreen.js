@@ -34,10 +34,10 @@ const CraneScreen = () => {
   return (
     <KeyboardAvoidingView style={styles.flex} keyboardShouldPersistTaps="handled">
       <ScrollView style={styles.content} contentContainerStyle={styles.container}>
-        <View style={styles.header}>
-          <Text style={styles.subTitle}>{t(`whats_the_total_height`)}</Text>
-        </View>
         <View style={styles.body}>
+          <View style={styles.header}>
+            <Text style={styles.subTitle}>{t(`whats_the_total_height`)}</Text>
+          </View>
           <Item regular style={styles.radius3}>
             <Input
               value={height}
@@ -147,6 +147,7 @@ const styles = StyleSheet.create({
   subTitle: {
     color: `#706F6F`,
     fontSize: 14,
+    marginBottom: 3,
   },
   input: {
     height: 40,

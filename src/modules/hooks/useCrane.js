@@ -993,7 +993,7 @@ const useCrane = () => {
     if (isSany100()) {
       return `Guindaste sugerido: Sany - 100 Ton`;
     }
-    return `Nenhum Guindaste encontrado!`;
+    return `Nenhum guindaste encontrado!`;
   }, [isTadano, isLuna, isSany75, isSany100]);
 
   const showResult = useCallback(() => {
