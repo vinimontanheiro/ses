@@ -54,5 +54,11 @@
   },
   "device":{
     "what_piece_weight_will_you_lift" : "Qual peso da peça você irá içar?"
+  },
+  "crane":{
+    "find_crane": "Encontrar guindaste",
+    "whats_the_total_height": "Qual é a altura total?",
+    "whats_the_weight": "Qual é o peso da carga?",
+    "whats_the_radius": "Qual é o raio de ação?"
   }
 }

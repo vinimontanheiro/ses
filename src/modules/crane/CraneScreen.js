@@ -12,9 +12,10 @@ import {
 import {useTranslation} from 'react-i18next';
 import useCrane from '../hooks/useCrane';
 import theme from '../theme';
+import SimpleAnimatableView from '../ui/SimpleAnimatableView';
 
 const CraneScreen = () => {
-  const {t} = useTranslation(`device`);
+  const {t} = useTranslation(`crane`);
   const {
     height,
     weight,
@@ -23,13 +24,18 @@ const CraneScreen = () => {
     onWeightChange,
     onRadiusChange,
     clear,
+    showResult,
+    result,
+    animation,
   } = useCrane();
+
+  console.log(result);
 
   return (
     <KeyboardAvoidingView style={styles.flex} keyboardShouldPersistTaps="handled">
       <ScrollView style={styles.content} contentContainerStyle={styles.container}>
         <View style={styles.header}>
-          <Text style={styles.subTitle}>Qual a altura total?</Text>
+          <Text style={styles.subTitle}>{t(`whats_the_total_height`)}</Text>
         </View>
         <View style={styles.body}>
           <Item regular style={styles.radius3}>
@@ -40,13 +46,13 @@ const CraneScreen = () => {
               keyboardType="numeric"
               onChangeText={onHeightChange}
             />
-            <View style={{paddingHorizontal: 10}}>
+            <View style={styles.paddingHorizontal10}>
               <Text>A</Text>
             </View>
           </Item>
 
-          <View style={[styles.header, {marginTop: 20}]}>
-            <Text style={styles.subTitle}>Qual o peso da carga?</Text>
+          <View style={[styles.header, styles.marginTop20]}>
+            <Text style={styles.subTitle}>{t(`whats_the_weight`)}</Text>
           </View>
           <Item regular style={styles.radius3}>
             <Input
@@ -56,13 +62,13 @@ const CraneScreen = () => {
               keyboardType="numeric"
               onChangeText={onWeightChange}
             />
-            <View style={{paddingHorizontal: 10}}>
+            <View style={styles.paddingHorizontal10}>
               <Text>KG</Text>
             </View>
           </Item>
 
-          <View style={[styles.header, {marginTop: 20}]}>
-            <Text style={styles.subTitle}>Qual o raio de ação?</Text>
+          <View style={[styles.header, styles.marginTop20]}>
+            <Text style={styles.subTitle}>{t(`whats_the_radius`)}</Text>
           </View>
           <Item regular style={styles.radius3}>
             <Input
@@ -72,19 +78,32 @@ const CraneScreen = () => {
               keyboardType="numeric"
               onChangeText={onRadiusChange}
             />
-            <View style={{paddingHorizontal: 10}}>
+            <View style={styles.paddingHorizontal10}>
               <Text>R</Text>
             </View>
           </Item>
 
-          <TouchableHighlight style={styles.button} underlayColor={theme.color.underlayBlue}>
-            <Text style={styles.buttonText}>{t(`action:calculate`)}</Text>
+          <TouchableHighlight
+            style={styles.button}
+            underlayColor={theme.color.underlayBlue}
+            onPress={showResult}>
+            <Text style={styles.buttonText}>{t(`find_crane`)}</Text>
           </TouchableHighlight>
 
           <TouchableOpacity style={styles.clearButton} onPress={clear}>
             <Text style={{color: theme.color.grayText}}>Limpar</Text>
           </TouchableOpacity>
         </View>
+        <SimpleAnimatableView
+          style={[{width: result ? `100%` : 0}]}
+          duration={500}
+          type={animation.type}
+          onAnimationBegin={animation.onStart}
+          onAnimationEnd={animation.onEnd}>
+          <View style={styles.resultBox}>
+            <Text style={styles.resultText}>{result}</Text>
+          </View>
+        </SimpleAnimatableView>
       </ScrollView>
     </KeyboardAvoidingView>
   );
@@ -100,7 +119,7 @@ const styles = StyleSheet.create({
     flexDirection: `column`,
     alignItems: `center`,
     justifyContent: `center`,
-    padding: 25,
+    paddingTop: 25,
   },
   body: {
     flex: 1,
@@ -110,6 +129,7 @@ const styles = StyleSheet.create({
     alignItems: `center`,
     justifyContent: `flex-start`,
     paddingVertical: 5,
+    paddingHorizontal: 25,
   },
   header: {
     width: `95%`,
@@ -144,6 +164,27 @@ const styles = StyleSheet.create({
   },
   radius3: {
     borderRadius: 3,
+  },
+  paddingHorizontal10: {
+    paddingHorizontal: 10,
+  },
+  marginTop20: {
+    marginTop: 20,
+  },
+  resultBox: {
+    width: `100%`,
+    backgroundColor: theme.color.blue3,
+    height: 100,
+    alignItems: `center`,
+    justifyContent: `center`,
+    borderTopLeftRadius: 20,
+    borderTopRightRadius: 20,
+  },
+  resultText: {
+    color: theme.color.white,
+    fontSize: 16,
+    fontWeight: `bold`,
+    textAlign: `center`,
   },
 });
 
