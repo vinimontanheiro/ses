@@ -24,6 +24,21 @@ import STEEL3 from './assets/img/steels/steel3.png';
 import STEEL4 from './assets/img/steels/steel4.png';
 import STEEL5 from './assets/img/steels/steel5.png';
 import STEEL6 from './assets/img/steels/steel6.png';
+import BRACE1 from './assets/img/sec-brace1.png';
+import BRACE2 from './assets/img/sec-brace2.png';
+import BRACE3 from './assets/img/sec-brace3.png';
+import SHACKLES1 from './assets/img/sec-shackles1.png';
+import SHACKLES2 from './assets/img/sec-shackles2.png';
+import SHACKLES3 from './assets/img/sec-shackles3.png';
+import SHACKLES4 from './assets/img/sec-shackles4.png';
+import SHACKLES5 from './assets/img/sec-shackles5.png';
+import CABLES1 from './assets/img/sec-cables1.png';
+import CABLES2 from './assets/img/sec-cables2.png';
+import CABLES3 from './assets/img/sec-cables3.png';
+import PATOLAMENTO1 from './assets/img/sec-patolamento1.png';
+import PATOLAMENTO2 from './assets/img/sec-patolamento2.png';
+import PATOLAMENTO3 from './assets/img/sec-patolamento3.png';
+import PATOLAMENTO4 from './assets/img/sec-patolamento4.png';
 
 export const IS_DEVELOPMENT = false;
 
@@ -404,3 +419,74 @@ export const STEELS = [
     image: STEEL6,
   },
 ];
+
+export const SECURITY = {
+  braces: [
+    {
+      text: `Critérios eliminatórios - Desgaste por abrasão, este tipo de desgaste pode atingir um ponto máximo de 10%, acima disso diminui o fator de segurança e a cinta deve ser descartada.`,
+      image: BRACE1,
+    },
+    {
+      text: `Corte no sentido longitudinal - Geralmente ocorre por entrar em contato com uma parte não plana da carga e quando esse corte ultrapassa 10% da laegura da cinta deve-se descartar a mesma.`,
+      image: BRACE2,
+    },
+    {
+      text: `Corte no sentido transversal - Este tipo de dano ocorre quando a cinta sofre uma tensão desequilibrada ou quando entra em contato direto sem proteção com cantos vivos, cortantes, abrasivos ou agudos da carga provocando o descarte da cinta se atingir 10% da largura da cinta.`,
+      image: BRACE3,
+    },
+  ],
+  shackles: [
+    {
+      text: `Torção ou empenamento da rosca olhal - Fragiliza o equipamento, podendo conter trincar internas. É impeditivo para o uso.`,
+      image: SHACKLES1,
+    },
+    {
+      text: `Corrosão - Diminui a área de matérias, diminuindo sua capacidade de elevação.`,
+      image: SHACKLES2,
+    },
+    {
+      text: `Manilha com deformações devido a sobrecarga no eixo da peça.`,
+      image: SHACKLES3,
+    },
+    {
+      text: `Desgaste por abrasão.`,
+      image: SHACKLES4,
+    },
+    {
+      text: `Torcimento por operação inadequada.`,
+      image: SHACKLES5,
+    },
+  ],
+  cables: [
+    {
+      text: `Gaiola de passarinho - Gerada por alívio repentino de tensão.`,
+      image: CABLES1,
+    },
+    {
+      text: `Rompimento - Cabo de aço que trabalhou fora da polia. Podemos perceber duas características de rupturas nos aramas: amassamento e sobrecarga.`,
+      image: CABLES2,
+    },
+    {
+      text: `Ruptura de pernas - Gerada por alguns acidentes durante o trabalho do cabo.`,
+      image: CABLES3,
+    },
+  ],
+  patolamento: [
+    {
+      text: `Patolamento inadequado - Estabilizadores usados de forma errada.`,
+      image: PATOLAMENTO1,
+    },
+    {
+      text: `Patolamento em locais com redes subterrâneas - Sempre verifique o local dos estabilizadores para ver se não tubulações ou redes subterrâneas, que podem quebrar ou afundar durante a operação.`,
+      image: PATOLAMENTO2,
+    },
+    {
+      text: `Solo inapropriado para patolamento: Sempre use materiais que aumentem a área de patolamento, assim evita afundamento do estabilizador. Utilize dormentes de madeira ou chapas de aço para aumentar  a área, e distribuir melhor as cargas no estabilizador.`,
+      image: PATOLAMENTO3,
+    },
+    {
+      text: `Operação do equipamento em desnível - Ocorre tombamento ou danos aos estabilizadores.`,
+      image: PATOLAMENTO4,
+    },
+  ],
+};

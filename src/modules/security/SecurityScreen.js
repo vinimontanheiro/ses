@@ -48,13 +48,13 @@ const SecurityScreen = () => {
             }}>
             <Text style={styles.text}>{t(`cables`)}</Text>
           </TouchableOpacity>
-          <TouchableOpacity
+          {/* <TouchableOpacity
             style={styles.box}
             onPress={() => {
               handleNavigation(`angles`);
             }}>
             <Text style={styles.text}>{t(`angles`)}</Text>
-          </TouchableOpacity>
+          </TouchableOpacity> */}
           <TouchableOpacity
             style={styles.box}
             onPress={() => {
