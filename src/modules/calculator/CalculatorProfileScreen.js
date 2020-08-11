@@ -385,7 +385,6 @@ const styles = StyleSheet.create({
   amountInput: {
     width: Platform.select({ios: `53%`, android: `51.5%`}),
     height: 40,
-    marginLeft: 10,
   },
   button: {
     marginTop: 20,
