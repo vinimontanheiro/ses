@@ -47,7 +47,7 @@ const CraneScreen = () => {
               onChangeText={onHeightChange}
             />
             <View style={styles.paddingHorizontal10}>
-              <Text>A</Text>
+              <Text>M</Text>
             </View>
           </Item>
 
@@ -79,7 +79,7 @@ const CraneScreen = () => {
               onChangeText={onRadiusChange}
             />
             <View style={styles.paddingHorizontal10}>
-              <Text>R</Text>
+              <Text>M</Text>
             </View>
           </Item>
 

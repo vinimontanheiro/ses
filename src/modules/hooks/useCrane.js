@@ -169,6 +169,60 @@ const useCrane = () => {
     return false;
   }, [radius, height, weight]);
 
+  const isBantam = useCallback(() => {
+    const r = parseValue(radius);
+    const h = parseValue(height);
+    const w = parseValue(weight);
+    if (r > 0 && r <= 3 && h <= 18 && w <= 16300) {
+      return true;
+    } else {
+      if (r > 3 && r <= 4 && h <= 18 && w <= 12000) {
+        return true;
+      } else {
+        if (r > 4 && r <= 5 && h <= 18 && w <= 9600) {
+          return true;
+        } else {
+          if (r > 5 && r <= 6 && h <= 18 && w <= 7800) {
+            return true;
+          } else {
+            if (r > 6 && r <= 7 && h <= 18 && w <= 6500) {
+              return true;
+            } else {
+              if (r > 7 && r <= 8 && h <= 18 && w <= 5500) {
+                return true;
+              } else {
+                if (r > 8 && r <= 9 && h <= 18 && w <= 4600) {
+                  return true;
+                } else {
+                  if (r > 9 && r <= 10 && h <= 18 && w <= 4000) {
+                    return true;
+                  } else {
+                    if (r > 10 && r <= 11 && h <= 18 && w <= 3400) {
+                      return true;
+                    } else {
+                      if (r > 11 && r <= 12 && h <= 18 && w <= 2900) {
+                        return true;
+                      } else {
+                        if (r > 12 && r <= 14 && h <= 18 && w <= 2200) {
+                          return true;
+                        } else {
+                          if (r > 14 && r <= 16 && h <= 18 && w <= 1700) {
+                            return true;
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    return false;
+  }, [radius, height, weight]);
+
   const isLuna = useCallback(() => {
     const r = parseValue(radius);
     const h = parseValue(height);
@@ -984,6 +1038,9 @@ const useCrane = () => {
     if (isTadano()) {
       return `Guindaste sugerido: Tadãno - 13 Ton`;
     }
+    if (isBantam()) {
+      return `Guindaste sugerido: Bantam - 18 Ton`;
+    }
     if (isLuna()) {
       return `Guindaste sugerido: Luna - 50 Ton`;
     }
@@ -994,7 +1051,7 @@ const useCrane = () => {
       return `Guindaste sugerido: Sany - 100 Ton`;
     }
     return `Nenhum guindaste encontrado!`;
-  }, [isTadano, isLuna, isSany75, isSany100]);
+  }, [isTadano, isBantam, isLuna, isSany75, isSany100]);
 
   const showResult = useCallback(() => {
     if (animation.type === ANIMATION_TYPE.FADE_OUT_DOWN) {
