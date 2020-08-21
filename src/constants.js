@@ -39,6 +39,29 @@ import PATOLAMENTO1 from './assets/img/sec-patolamento1.png';
 import PATOLAMENTO2 from './assets/img/sec-patolamento2.png';
 import PATOLAMENTO3 from './assets/img/sec-patolamento3.png';
 import PATOLAMENTO4 from './assets/img/sec-patolamento4.png';
+import SIGNAL1 from './assets/img/signal/signal1.png';
+import SIGNAL2 from './assets/img/signal/signal2.png';
+import SIGNAL3 from './assets/img/signal/signal3.png';
+import SIGNAL4 from './assets/img/signal/signal4.png';
+import SIGNAL5 from './assets/img/signal/signal5.png';
+import SIGNAL6 from './assets/img/signal/signal6.png';
+import SIGNAL7 from './assets/img/signal/signal7.png';
+import SIGNAL8 from './assets/img/signal/signal8.png';
+import SIGNAL9 from './assets/img/signal/signal9.png';
+import SIGNAL10 from './assets/img/signal/signal10.png';
+import SIGNAL11 from './assets/img/signal/signal11.png';
+import SIGNAL12 from './assets/img/signal/signal12.png';
+import SIGNAL13 from './assets/img/signal/signal13.png';
+import SIGNAL14 from './assets/img/signal/signal14.png';
+import SIGNAL15 from './assets/img/signal/signal15.png';
+import SIGNAL16 from './assets/img/signal/signal16.png';
+import SIGNAL17 from './assets/img/signal/signal17.png';
+import SIGNAL18 from './assets/img/signal/signal18.png';
+import SIGNAL19 from './assets/img/signal/signal19.png';
+import SIGNAL20 from './assets/img/signal/signal20.png';
+import SIGNAL21 from './assets/img/signal/signal21.png';
+import SIGNAL22 from './assets/img/signal/signal22.png';
+import SIGNAL23 from './assets/img/signal/signal23.png';
 
 export const IS_DEVELOPMENT = false;
 
@@ -463,7 +486,7 @@ export const SECURITY = {
       image: CABLES1,
     },
     {
-      text: `Rompimento - Cabo de aço que trabalhou fora da polia. Podemos perceber duas características de rupturas nos aramas: amassamento e sobrecarga.`,
+      text: `Rompimento - Cabo de aço que trabalhou fora da polia. Podemos perceber duas características de rupturas nos arames: amassamento e sobrecarga.`,
       image: CABLES2,
     },
     {
@@ -487,6 +510,101 @@ export const SECURITY = {
     {
       text: `Operação do equipamento em desnível - Ocorre tombamento ou danos aos estabilizadores.`,
       image: PATOLAMENTO4,
+    },
+  ],
+  angles: [],
+  signal: [
+    {
+      text: `Elevar carga`,
+      image: SIGNAL1,
+    },
+    {
+      text: `Abaixar carga`,
+      image: SIGNAL2,
+    },
+    {
+      text: `Elevar carga lentamente`,
+      image: SIGNAL3,
+    },
+    {
+      text: `Abaixar carga lentamente`,
+      image: SIGNAL4,
+    },
+    {
+      text: `Elevar lança`,
+      image: SIGNAL5,
+    },
+    {
+      text: `Abaixar lança`,
+      image: SIGNAL6,
+    },
+    {
+      text: `Elevar lança lentamente`,
+      image: SIGNAL7,
+    },
+    {
+      text: `Abaixar lança lentamente`,
+      image: SIGNAL8,
+    },
+    {
+      text: `Elevar lança e abaixar carga`,
+      image: SIGNAL9,
+    },
+    {
+      text: `Abaixar lança e elevar carga`,
+      image: SIGNAL10,
+    },
+    {
+      text: `Mover partes lentamente`,
+      image: SIGNAL11,
+    },
+    {
+      text: `Guincho do Jib auxiliar`,
+      image: SIGNAL12,
+    },
+    {
+      text: `Guincho principal`,
+      image: SIGNAL13,
+    },
+    {
+      text: `Mover conforme indicado`,
+      image: SIGNAL14,
+    },
+    {
+      text: `Virar para direita`,
+      image: SIGNAL15,
+    },
+    {
+      text: `Virar para esquerda`,
+      image: SIGNAL16,
+    },
+    {
+      text: `Recolher lança hidráulica`,
+      image: SIGNAL17,
+    },
+    {
+      text: `Extender lança hidráulica`,
+      image: SIGNAL18,
+    },
+    {
+      text: `Gire a lança na direção indicada`,
+      image: SIGNAL19,
+    },
+    {
+      text: `Parada de emergência com os dois braços`,
+      image: SIGNAL20,
+    },
+    {
+      text: `Feche a caçamba`,
+      image: SIGNAL21,
+    },
+    {
+      text: `Abra a caçamba`,
+      image: SIGNAL22,
+    },
+    {
+      text: `Amarrar tudo`,
+      image: SIGNAL23,
     },
   ],
 };
