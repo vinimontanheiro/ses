@@ -39,6 +39,10 @@ import PATOLAMENTO1 from './assets/img/sec-patolamento1.png';
 import PATOLAMENTO2 from './assets/img/sec-patolamento2.png';
 import PATOLAMENTO3 from './assets/img/sec-patolamento3.png';
 import PATOLAMENTO4 from './assets/img/sec-patolamento4.png';
+import ANGLES1 from './assets/img/angles1.png';
+import ANGLES2 from './assets/img/angles2.png';
+import ANGLES3 from './assets/img/angles3.png';
+import ANGLES4 from './assets/img/angles4.png';
 import SIGNAL1 from './assets/img/signal/signal1.png';
 import SIGNAL2 from './assets/img/signal/signal2.png';
 import SIGNAL3 from './assets/img/signal/signal3.png';
@@ -512,98 +516,115 @@ export const SECURITY = {
       image: PATOLAMENTO4,
     },
   ],
-  angles: [],
-  signal: [
+  angles: [
     {
-      text: `Elevar carga`,
+      text: `Os cabos sempre devem estar acima do Centro de gravidade, para estabilizar a peça.`,
+      image: ANGLES1,
+    },
+    {
+      text: `Os cabos sempre devem estar acima do Centro de gravidade, para estabilizar a peça.`,
+      image: ANGLES2,
+    },
+    {
+      text: `Nunca uso cabos ou cintas de elevação com ângulos maiores que 60°, pois a resistência diminui, e pode afetar também os outros acessórios de elevação.`,
+      image: ANGLES3,
+    },
+    {
+      text: `Nunca uso cabos ou cintas de elevação com ângulos maiores que 60°, pois a resistência diminui, e pode afetar também os outros acessórios de elevação.`,
+      image: ANGLES4,
+    },
+  ],
+  signals_for_crane: [
+    {
+      text: `Elevar carga.`,
       image: SIGNAL1,
     },
     {
-      text: `Abaixar carga`,
+      text: `Abaixar carga.`,
       image: SIGNAL2,
     },
     {
-      text: `Elevar carga lentamente`,
+      text: `Elevar carga lentamente.`,
       image: SIGNAL3,
     },
     {
-      text: `Abaixar carga lentamente`,
+      text: `Abaixar carga lentamente.`,
       image: SIGNAL4,
     },
     {
-      text: `Elevar lança`,
+      text: `Elevar lança.`,
       image: SIGNAL5,
     },
     {
-      text: `Abaixar lança`,
+      text: `Abaixar lança.`,
       image: SIGNAL6,
     },
     {
-      text: `Elevar lança lentamente`,
+      text: `Elevar lança lentamente.`,
       image: SIGNAL7,
     },
     {
-      text: `Abaixar lança lentamente`,
+      text: `Abaixar lança lentamente.`,
       image: SIGNAL8,
     },
     {
-      text: `Elevar lança e abaixar carga`,
+      text: `Elevar lança e abaixar carga.`,
       image: SIGNAL9,
     },
     {
-      text: `Abaixar lança e elevar carga`,
+      text: `Abaixar lança e elevar carga.`,
       image: SIGNAL10,
     },
     {
-      text: `Mover partes lentamente`,
+      text: `Mover partes lentamente.`,
       image: SIGNAL11,
     },
     {
-      text: `Guincho do Jib auxiliar`,
+      text: `Guincho do Jib auxiliar.`,
       image: SIGNAL12,
     },
     {
-      text: `Guincho principal`,
+      text: `Guincho principal.`,
       image: SIGNAL13,
     },
     {
-      text: `Mover conforme indicado`,
+      text: `Mover conforme indicado.`,
       image: SIGNAL14,
     },
     {
-      text: `Virar para direita`,
+      text: `Virar para direita.`,
       image: SIGNAL15,
     },
     {
-      text: `Virar para esquerda`,
+      text: `Virar para esquerda.`,
       image: SIGNAL16,
     },
     {
-      text: `Recolher lança hidráulica`,
+      text: `Recolher lança hidráulica.`,
       image: SIGNAL17,
     },
     {
-      text: `Extender lança hidráulica`,
+      text: `Extender lança hidráulica.`,
       image: SIGNAL18,
     },
     {
-      text: `Gire a lança na direção indicada`,
+      text: `Gire a lança na direção indicada.`,
       image: SIGNAL19,
     },
     {
-      text: `Parada de emergência com os dois braços`,
+      text: `Parada de emergência com os dois braços.`,
       image: SIGNAL20,
     },
     {
-      text: `Feche a caçamba`,
+      text: `Feche a caçamba.`,
       image: SIGNAL21,
     },
     {
-      text: `Abra a caçamba`,
+      text: `Abra a caçamba.`,
       image: SIGNAL22,
     },
     {
-      text: `Amarrar tudo`,
+      text: `Amarrar tudo.`,
       image: SIGNAL23,
     },
   ],

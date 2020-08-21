@@ -26,7 +26,8 @@
     "shackles": "Manilhas",
     "cables" : "Cabos",
     "angles" : "Ângulos",
-    "patolamento": "Patolamento"
+    "patolamento": "Patolamento",
+    "signals_for_crane" : "Sinais para Guindaste"
   },
   "calculator":{
    "shape1": "Barra Sextavada",

@@ -48,19 +48,27 @@ const SecurityScreen = () => {
             }}>
             <Text style={styles.text}>{t(`cables`)}</Text>
           </TouchableOpacity>
-          {/* <TouchableOpacity
+          <TouchableOpacity
             style={styles.box}
             onPress={() => {
               handleNavigation(`angles`);
             }}>
             <Text style={styles.text}>{t(`angles`)}</Text>
-          </TouchableOpacity> */}
+          </TouchableOpacity>
           <TouchableOpacity
             style={styles.box}
             onPress={() => {
               handleNavigation(`patolamento`);
             }}>
             <Text style={styles.text}>{t(`patolamento`)}</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            style={styles.box}
+            onPress={() => {
+              handleNavigation(`signals_for_crane`);
+            }}>
+            <Text style={styles.text}>{t(`signals_for_crane`)}</Text>
           </TouchableOpacity>
         </View>
       </ScrollView>
@@ -91,7 +99,7 @@ const styles = StyleSheet.create({
   },
   box: {
     width: `95%`,
-    height: 100,
+    height: 80,
     backgroundColor: theme.color.blue5,
     borderRadius: 5,
     flexDirection: `row`,
