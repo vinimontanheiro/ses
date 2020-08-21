@@ -43,7 +43,12 @@ const SignInScreen = () => {
                 onPress={handleGoogleSignIn}
                 underlayColor={theme.color.defaultLight}>
                 <View style={styles.textBox}>
-                  <Image source={GOOGLE_IMG} width={30} height={30} />
+                  <Image
+                    style={styles.icon}
+                    source={GOOGLE_IMG}
+                    width={styles.icon.width}
+                    height={styles.icon.height}
+                  />
                   <Text style={styles.text}>{t(`sign_in_with_google`)}</Text>
                 </View>
               </TouchableHighlight>
@@ -54,7 +59,12 @@ const SignInScreen = () => {
                   onPress={handleAppleSignIn}
                   underlayColor={theme.color.defaultLight}>
                   <View style={styles.textBox}>
-                    <Image source={APPLE_IMG} width={32} height={32} />
+                    <Image
+                      style={styles.icon}
+                      source={APPLE_IMG}
+                      width={styles.icon.width}
+                      height={styles.icon.height}
+                    />
                     <Text style={styles.text}>{t(`sign_in_with_apple`)}</Text>
                   </View>
                 </TouchableHighlight>
@@ -114,16 +124,23 @@ const styles = StyleSheet.create({
     paddingVertical: 8,
     borderRadius: 5,
     width: 200,
+    height: 45,
+    alignItems: `center`,
+    justifyContent: `center`,
   },
   textBox: {
     justifyContent: `center`,
     alignItems: `center`,
     flexDirection: `row`,
   },
-
   text: {
     marginLeft: 5,
-    fontSize: 16,
+    fontSize: 17,
+    fontWeight: `600`,
+  },
+  icon: {
+    width: 15,
+    height: 15,
   },
 });
 
