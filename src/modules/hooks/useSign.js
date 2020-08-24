@@ -12,7 +12,6 @@ import {IS_ANDROID, FIRESTORE_UID, PROVIDER} from '../../constants';
 import useUser from './useUser';
 import useMessage from './useMessage';
 import useLoading from './useLoading';
-import {setApp} from '../../services/redux/actions';
 
 const AUTH_COLLECTION = `custom_auth`;
 const SETTINGS_COLLECTION = `settings`;
