@@ -1,4 +1,4 @@
-import React, {useCallback} from 'react';
+import React, {useCallback, useLayoutEffect} from 'react';
 import {
   Text,
   StyleSheet,
@@ -8,6 +8,7 @@ import {
   Image,
   TouchableOpacity,
 } from 'react-native';
+import {Icon} from 'native-base';
 import {useTranslation} from 'react-i18next';
 import {useNavigation} from '@react-navigation/native';
 import theme from '../theme';
@@ -18,6 +19,18 @@ import SECURITY_IMG from '../../assets/img/security.png';
 import ARROW_IMG from '../../assets/img/arrow.png';
 import useUser from '../hooks/useUser';
 import {SCREEN} from '../../constants';
+import useSign from '../hooks/useSign';
+
+export const LogoutButton = () => {
+  const {handleLogout} = useSign();
+  return (
+    <TouchableOpacity style={styles.logout} onPress={handleLogout}>
+      <View style={styles.defaultIcon}>
+        <Icon size={30} name="exit-outline" color={theme.color.dark} />
+      </View>
+    </TouchableOpacity>
+  );
+};
 
 const HomeScreen = () => {
   const {t} = useTranslation(`home`);
@@ -36,12 +49,16 @@ const HomeScreen = () => {
   return (
     <KeyboardAvoidingView style={styles.flex} keyboardShouldPersistTaps="handled">
       <ScrollView style={styles.content} contentContainerStyle={styles.container}>
-        <View style={styles.header}>
-          <Text style={styles.headerText}>
-            {t(`hello`)}, <Text style={styles.bold}> {givenName}</Text>
-          </Text>
-          <Text style={styles.subTitle}>{t(`choose_some_action_below`)}</Text>
+        <View style={styles.headerContent}>
+          <View style={styles.header}>
+            <Text style={styles.headerText}>
+              {t(`hello`)}, <Text style={styles.bold}> {givenName}</Text>
+            </Text>
+            <Text style={styles.subTitle}>{t(`choose_some_action_below`)}</Text>
+          </View>
+          <LogoutButton />
         </View>
+
         <View style={styles.body}>
           <TouchableOpacity
             onPress={() => {
@@ -155,6 +172,12 @@ const styles = StyleSheet.create({
     fontWeight: `bold`,
     color: theme.color.dark,
   },
+  headerContent: {
+    width: `95%`,
+    flexDirection: `row`,
+    justifyContent: `space-between`,
+    alignItems: `center`,
+  },
   header: {
     width: `95%`,
     flexDirection: `column`,
@@ -172,6 +195,9 @@ const styles = StyleSheet.create({
   },
   bold: {
     fontWeight: `bold`,
+  },
+  defaultIcon: {
+    padding: 8,
   },
 });
 

@@ -18,7 +18,7 @@ const useUser = () => {
     [dispatch],
   );
 
-  return {updateUser, user};
+  return {updateUser, dispatch, user};
 };
 
 export default useUser;

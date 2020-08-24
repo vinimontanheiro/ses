@@ -10,8 +10,8 @@
   },
   "sign": {
     "join": "Entrar",
-    "sign_in_with_google" : "Entrar com o Google",
-    "sign_in_with_apple" : "Entrar com a Apple"
+    "sign_in_with_google" : "Continuar com o Google",
+    "sign_in_with_apple" : "Continuar com a Apple"
   },
   "home":{
     "hello":"Olá",

@@ -8,10 +8,11 @@ import {useCallback, useContext} from 'react';
 import {useTranslation} from 'react-i18next';
 import {showLog} from '../../services/utils';
 import {AuthContext} from '../../services/context';
-import {IS_ANDROID, FIRESTORE_UID} from '../../constants';
+import {IS_ANDROID, FIRESTORE_UID, PROVIDER} from '../../constants';
 import useUser from './useUser';
 import useMessage from './useMessage';
 import useLoading from './useLoading';
+import {setApp} from '../../services/redux/actions';
 
 const AUTH_COLLECTION = `custom_auth`;
 const SETTINGS_COLLECTION = `settings`;
@@ -20,7 +21,7 @@ const useSign = () => {
   const {authSignIn} = useContext(AuthContext);
   const {t} = useTranslation(`error`);
   const [, setLoading] = useLoading();
-  const {updateUser} = useUser();
+  const {updateUser, user} = useUser();
   const {showMessage} = useMessage();
 
   const setToken = useCallback(
@@ -30,36 +31,64 @@ const useSign = () => {
     [authSignIn],
   );
 
+  const handleAppleLogout = useCallback(async () => {
+    try {
+      await appleAuth.performRequest({
+        requestedOperation: AppleAuthRequestOperation.LOGOUT,
+      });
+    } catch (e) {
+      showLog(e);
+    }
+  }, []);
+
+  const handleGoogleLogout = useCallback(async () => {
+    try {
+      await GoogleSignin.revokeAccess();
+      await GoogleSignin.signOut();
+    } catch (e) {
+      showLog(e);
+    }
+  }, []);
+
+  const handleLogout = useCallback(async () => {
+    setToken(``);
+    if (user.prodiver === PROVIDER.APPLE) {
+      await handleAppleLogout();
+    }
+    if (user.prodiver === PROVIDER.GOOGLE) {
+      await handleGoogleLogout();
+    }
+  }, [user, setToken, handleAppleLogout, handleGoogleLogout]);
+
   const checkAuthorizedUser = useCallback(
-    async (user) => {
+    async (userData) => {
       try {
+        console.log(userData);
         setLoading(true);
         const settings = await firestore().collection(SETTINGS_COLLECTION).doc(FIRESTORE_UID).get();
         const {restrictAuthEnabled} = settings.data();
         const auth = await firestore().collection(AUTH_COLLECTION).doc(FIRESTORE_UID).get();
         const {emails} = auth.data();
         if (restrictAuthEnabled) {
-          if (emails && emails.includes(user.email)) {
-            updateUser(user);
-            setToken(user.token);
+          if (emails && emails.includes(userData.email)) {
+            updateUser(userData);
+            setToken(userData.token);
           } else {
             showMessage(t(`unauthorized_user`));
-            await GoogleSignin.revokeAccess();
-            await GoogleSignin.signOut();
+            await handleLogout();
           }
         } else {
-          updateUser(user);
-          setToken(user.token);
+          updateUser(userData);
+          setToken(userData.token);
         }
         setLoading(false);
       } catch (error) {
         setLoading(false);
         showMessage(t(`network_error`));
-        await GoogleSignin.revokeAccess();
-        await GoogleSignin.signOut();
+        await handleLogout();
       }
     },
-    [t, updateUser, setLoading, showMessage, setToken],
+    [t, updateUser, handleLogout, setLoading, showMessage, setToken],
   );
 
   const handleGoogleSignIn = useCallback(async () => {
@@ -67,19 +96,18 @@ const useSign = () => {
       if (IS_ANDROID) {
         await GoogleSignin.hasPlayServices();
       }
-      const {user} = await GoogleSignin.signIn();
+      const {user: userData} = await GoogleSignin.signIn();
       const {accessToken} = await GoogleSignin.getTokens();
-      if (accessToken && user.email) {
-        await checkAuthorizedUser({...user, token: accessToken});
+      if (accessToken && userData.email) {
+        await checkAuthorizedUser({...userData, token: accessToken, prodiver: PROVIDER.GOOGLE});
       } else {
         showMessage(t(`unauthorized_user`));
-        await GoogleSignin.revokeAccess();
-        await GoogleSignin.signOut();
+        await handleGoogleLogout();
       }
     } catch (error) {
       showLog(error);
     }
-  }, [checkAuthorizedUser, showMessage, t]);
+  }, [checkAuthorizedUser, handleGoogleLogout, showMessage, t]);
 
   const handleAppleSignIn = useCallback(async () => {
     try {
@@ -87,27 +115,31 @@ const useSign = () => {
         requestedOperation: AppleAuthRequestOperation.LOGIN,
         requestedScopes: [AppleAuthRequestScope.EMAIL, AppleAuthRequestScope.FULL_NAME],
       });
+      console.log(appleAuthRequestResponse);
       if (appleAuthRequestResponse && appleAuthRequestResponse.identityToken) {
-        const {email, user, fullName} = appleAuthRequestResponse;
+        const {email, user: userData, fullName} = appleAuthRequestResponse;
         if (email) {
           await checkAuthorizedUser({
-            ...user,
+            ...userData,
             ...fullName,
             email,
             token: appleAuthRequestResponse.identityToken,
+            prodiver: PROVIDER.APPLE,
           });
         } else {
           showMessage(t(`apple_denied`));
+          await handleAppleLogout();
         }
       }
     } catch (error) {
-      showLog(error);
+      console.log(error);
     }
-  }, [t, showMessage, checkAuthorizedUser]);
+  }, [t, showMessage, checkAuthorizedUser, handleAppleLogout]);
 
   return {
     handleGoogleSignIn,
     handleAppleSignIn,
+    handleLogout,
   };
 };
 

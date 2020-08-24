@@ -73,6 +73,11 @@ export const WEB_CLIENT_ID = `119879670298-v0nd2t43ag4b9oh3lj04rr6n5n2457tl.apps
 
 export const IS_ANDROID = Platform.OS === `android`;
 
+export const PROVIDER = {
+  GOOGLE: `GOOGLE`,
+  APPLE: `APPLE`,
+};
+
 export const SCREEN = {
   SIGN_IN: `sign_in`,
   HOME_SCREEN: `home_screen`,

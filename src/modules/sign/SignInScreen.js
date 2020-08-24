@@ -120,10 +120,10 @@ const styles = StyleSheet.create({
   },
   button: {
     backgroundColor: `white`,
-    paddingHorizontal: 10,
+    paddingHorizontal: 8,
     paddingVertical: 8,
     borderRadius: 5,
-    width: 200,
+    width: 240,
     height: 45,
     alignItems: `center`,
     justifyContent: `center`,
